@@ -30,7 +30,7 @@ body {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-1495px); /* 5 images * 299px (259px + 40px gap) */
+    transform: translateY(-1495px); 
   }
 }
 
@@ -40,7 +40,7 @@ body {
 
 @keyframes infinite-scroll-reverse {
   0% {
-    transform: translateY(-1495px); /* 5 images * 299px (259px + 40px gap) */
+    transform: translateY(-1495px); 
   }
   100% {
     transform: translateY(0);
@@ -56,7 +56,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-1670px); /* 5 images * 310px + 5 gaps * 24px */
+    transform: translateX(-1670px); 
   }
 }
 
