@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact", "Download App"];
 const SERVICES_HERO_IMAGE = "/assets/services/services-cart.png";
 
-// Generates navigation href based on menu item name
 const navHref = (item: string) => {
   switch (item) {
     case "Home":
@@ -42,7 +41,6 @@ type DownloadCTAProps = {
 export default function Services() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (!isMenuOpen) {
       document.body.style.removeProperty("overflow");
@@ -66,6 +64,7 @@ export default function Services() {
     <div className="min-h-screen bg-[#f9f7ff] text-[#3a3a3a]">
       <div className="relative flex min-h-screen w-full flex-col gap-8 px-6 pb-20 pt-6 sm:gap-10 sm:px-10 md:px-12 md:pb-24 md:pt-8 lg:grid lg:grid-cols-2 lg:gap-12 lg:px-12 xl:gap-16 xl:px-16">
         <div className="flex flex-col gap-8 sm:gap-10">
+          {/* Navbar (copied from home, with Services active) */}
           <header className="relative flex flex-col gap-5 md:gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
             <div className="flex items-center gap-4 py-2 md:py-0 lg:py-0">
               <Image
@@ -124,7 +123,7 @@ export default function Services() {
               </div>
             </nav>
 
-            <nav className="relative z-30 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
+            <nav className="relative z-50 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
               <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
                 {NAV_ITEMS.map((item) => {
                   const isActive = item === "Services";
@@ -133,7 +132,7 @@ export default function Services() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`relative z-10 transition-colors whitespace-nowrap ${
+                      className={`relative z-50 transition-colors whitespace-nowrap ${
                         isDownloadApp
                           ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
                           : isActive
@@ -149,6 +148,7 @@ export default function Services() {
             </nav>
           </header>
 
+          {/* Mobile nav overlay (copied from home) */}
           <div
             className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${
               isMenuOpen
@@ -198,6 +198,7 @@ export default function Services() {
             </div>
           </div>
 
+          {/* Hero section (copied from home) */}
           <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
             <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12">
               <div className="space-y-7 px-1 md:space-y-8 md:px-0">
@@ -240,6 +241,7 @@ export default function Services() {
           </main>
         </div>
 
+        {/* Hero side image (copied from home) */}
         <div className="relative hidden lg:flex lg:items-start lg:justify-end lg:-mr-12 lg:-mt-8 xl:-mr-15 xl:-mt-12">
           <Image
           src="/assets/Home.png"
@@ -252,8 +254,10 @@ export default function Services() {
         </div>
       </div>
 
+      {/* Services detail section (from Figma) */}
       <section className="bg-[#e9e6ed] px-6 py-16 sm:px-10 md:px-12 lg:px-12 xl:px-16">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-10 lg:gap-12">
+          {/* Electronics Sales - wide card */}
           <div className="relative overflow-hidden rounded-2xl">
             <div className="relative h-[260px] sm:h-[320px] md:h-[360px] lg:h-[420px]">
             <Image
@@ -279,7 +283,9 @@ export default function Services() {
             </div>
           </div>
 
+          {/* Middle row: three service cards */}
           <div className="grid gap-6 md:grid-cols-3">
+            {/* Doorstep Delivery */}
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[360px]">
               <Image
@@ -305,6 +311,7 @@ export default function Services() {
               </div>
             </div>
 
+            {/* Wholesale Orders */}
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[360px]">
               <Image
@@ -329,6 +336,7 @@ export default function Services() {
               </div>
             </div>
 
+            {/* Online Ordering */}
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[360px]">
               <Image
@@ -354,6 +362,7 @@ export default function Services() {
             </div>
           </div>
 
+          {/* Building Materials Supply - wide card */}
           <div className="relative overflow-hidden rounded-2xl">
             <div className="relative h-[260px] sm:h-[320px] md:h-[360px] lg:h-[420px]">
             <Image
@@ -381,6 +390,7 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Footer (copied from home) */}
       <footer className="bg-[#0f002f] px-6 py-12 sm:px-10 md:px-12 md:py-14 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-[1400px]">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">

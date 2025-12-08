@@ -64,7 +64,6 @@ body {
   animation: infinite-scroll-horizontal 20s linear infinite;
 }
 
-/* Utility class to hide scrollbars while maintaining scroll functionality */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

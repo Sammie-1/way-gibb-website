@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact", "Download App"];
 
-// Generates navigation href based on menu item name
 const navHref = (item: string) => {
   switch (item) {
     case "Home":
@@ -46,7 +45,6 @@ type MetricCardProps = {
 export default function AboutPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (!isMenuOpen) {
       document.body.style.removeProperty("overflow");
@@ -128,7 +126,7 @@ export default function AboutPage() {
               </div>
             </nav>
 
-            <nav className="relative z-30 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
+            <nav className="relative z-50 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
               <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
                 {NAV_ITEMS.map((item) => {
                   const isActive = item === "About";
@@ -137,7 +135,7 @@ export default function AboutPage() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`relative z-10 transition-colors whitespace-nowrap ${
+                      className={`relative z-50 transition-colors whitespace-nowrap ${
                         isDownloadApp
                           ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
                           : isActive

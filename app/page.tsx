@@ -4,9 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact", "Download App"];
+const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact"];
 
-// Generates navigation href based on menu item name
 const navHref = (item: string) => {
   switch (item) {
     case "Home":
@@ -39,7 +38,6 @@ type DownloadCTAProps = {
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (!isMenuOpen) {
       document.body.style.removeProperty("overflow");
@@ -119,7 +117,7 @@ export default function Home() {
             </div>
           </nav>
 
-          <nav className="hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
+          <nav className="relative z-50 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
             <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
               {NAV_ITEMS.map((item) => {
                 const isActive = item === "Home";
@@ -127,7 +125,7 @@ export default function Home() {
                   <Link
                     href={navHref(item)}
                     key={item}
-                    className={`pb-1 transition-colors whitespace-nowrap ${
+                    className={`relative z-50 pb-1 transition-colors whitespace-nowrap ${
                       isActive
                         ? "border-b-2 border-[#2c1a4d] text-[#372161]"
                         : "text-[#3a3a3a] hover:text-[#372161]"
@@ -946,13 +944,13 @@ function StoreButton({ label, href, iconSrc, className = "" }: StoreButtonProps)
 
 function DownloadCTA({ className = "", onClick }: DownloadCTAProps) {
   return (
-    <button
-      type="button"
+    <Link
+      href="/download-app"
       onClick={onClick}
       className={`whitespace-nowrap rounded-full border border-[#422774] px-6 py-3 text-[15px] font-semibold text-[#372161] transition hover:bg-[#372161] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#372161] md:px-5 md:py-2 md:text-[16px] ${className}`}
     >
       Download App
-    </button>
+    </Link>
   );
 }
 

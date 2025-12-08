@@ -44,7 +44,6 @@ const FAQ_ITEMS: FaqItem[] = [
   },
 ];
 
-// Generates navigation href based on menu item name
 const navHref = (item: string) => {
   switch (item) {
     case "Home":
@@ -80,7 +79,6 @@ export default function ContactPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (!isMenuOpen) {
       document.body.style.removeProperty("overflow");
@@ -162,7 +160,7 @@ export default function ContactPage() {
               </div>
             </nav>
 
-            <nav className="relative z-30 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
+            <nav className="relative z-50 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
               <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
                 {NAV_ITEMS.map((item) => {
                   const isActive = item === "Contact";
@@ -171,7 +169,7 @@ export default function ContactPage() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`relative z-10 transition-colors whitespace-nowrap ${
+                      className={`relative z-50 transition-colors whitespace-nowrap ${
                         isDownloadApp
                           ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
                           : isActive
@@ -237,6 +235,7 @@ export default function ContactPage() {
           </div>
 
           <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
+            {/* Hero copied from About page, with text tailored for Contact */}
             <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12">
               <div className="space-y-7 px-1 md:space-y-8 md:px-0">
                 <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
@@ -335,9 +334,11 @@ export default function ContactPage() {
         </div>
       </div>
 
+      {/* Contact details + form section */}
       <section className="bg-[#f9f7ff] px-6 py-16 sm:px-10 md:px-12 lg:px-16 flex items-center">
         <div className="mx-auto max-w-[1200px]">
           <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+            {/* Left: contact info card */}
             <div className="space-y-7 rounded-[20px] bg-white px-5 py-6 shadow-[0_10px_24px_rgba(0,0,0,0.1)] sm:px-6 sm:py-7">
               <div className="space-y-4">
                 <span className="inline-flex items-center rounded-full border border-[#d9d0f1] px-4 py-1 text-xs font-semibold uppercase tracking-wide text-[#3a3a3a]">
@@ -439,6 +440,7 @@ export default function ContactPage() {
               </div>
             </div>
 
+            {/* Right: contact form card */}
             <div className="space-y-5 rounded-[20px] bg-[#f1ecfb] px-5 py-6 shadow-[0_10px_24px_rgba(0,0,0,0.1)] sm:px-6 sm:py-7">
               <div className="space-y-3">
                 <span className="inline-flex items-center rounded-full border border-[#d9d0f1] px-4 py-1 text-xs font-semibold uppercase tracking-wide text-[#3a3a3a]">
