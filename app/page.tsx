@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact"];
+const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact", "Download App"];
 
+// Generates navigation href based on menu item name
 const navHref = (item: string) => {
   switch (item) {
     case "Home":
@@ -38,6 +39,7 @@ type DownloadCTAProps = {
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (!isMenuOpen) {
       document.body.style.removeProperty("overflow");

@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact"];
+const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact", "Download App"];
 
+// Generates navigation href based on menu item name
 const navHref = (item: string) => {
   switch (item) {
     case "Home":
@@ -16,6 +17,8 @@ const navHref = (item: string) => {
       return "/services";
     case "Products":
       return "/products";
+    case "Download App":
+      return "/download-app";
     case "Contact":
       return "/contact";
     default:
@@ -43,6 +46,7 @@ type MetricCardProps = {
 export default function AboutPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (!isMenuOpen) {
       document.body.style.removeProperty("overflow");
@@ -104,12 +108,15 @@ export default function AboutPage() {
               <div className="flex w-full items-center justify-center gap-8 overflow-x-auto px-2">
                 {NAV_ITEMS.map((item) => {
                   const isActive = item === "About";
+                  const isDownloadApp = item === "Download App";
                   return (
                     <Link
                       href={navHref(item)}
                       key={item}
                       className={`whitespace-nowrap px-1 py-2 transition-colors ${
-                        isActive
+                        isDownloadApp
+                          ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
+                          : isActive
                           ? "border-b-2 border-[#2c1a4d] text-[#372161]"
                           : "text-[#3a3a3a] hover:text-[#372161]"
                       }`}
@@ -121,18 +128,21 @@ export default function AboutPage() {
               </div>
             </nav>
 
-            <nav className="hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
+            <nav className="relative z-30 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
               <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
                 {NAV_ITEMS.map((item) => {
                   const isActive = item === "About";
+                  const isDownloadApp = item === "Download App";
                   return (
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`pb-1 transition-colors whitespace-nowrap ${
-                        isActive
-                          ? "border-b-2 border-[#2c1a4d] text-[#372161]"
-                          : "text-[#3a3a3a] hover:text-[#372161]"
+                      className={`relative z-10 transition-colors whitespace-nowrap ${
+                        isDownloadApp
+                          ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
+                          : isActive
+                          ? "pb-1 border-b-2 border-[#2c1a4d] text-[#372161]"
+                          : "pb-1 text-[#3a3a3a] hover:text-[#372161]"
                       }`}
                     >
                       {item}
@@ -140,7 +150,6 @@ export default function AboutPage() {
                   );
                 })}
               </div>
-              <DownloadCTA />
             </nav>
           </header>
 
@@ -172,12 +181,15 @@ export default function AboutPage() {
             <div className="flex flex-col gap-3 px-2 text-lg font-semibold">
               {NAV_ITEMS.map((item) => {
                 const isActive = item === "About";
+                const isDownloadApp = item === "Download App";
                 return (
                   <Link
                     href={navHref(item)}
                     key={item}
                     className={`rounded-full px-6 py-4 text-left transition-colors ${
-                      isActive
+                      isDownloadApp
+                        ? "border-2 border-[#422774] text-center hover:bg-[#422774] hover:text-white"
+                        : isActive
                         ? "bg-[#372161] text-white"
                         : "text-[#3a3a3a] hover:text-[#372161]"
                     }`}
@@ -188,10 +200,6 @@ export default function AboutPage() {
                 );
               })}
             </div>
-            <DownloadCTA
-              className="w-full justify-center"
-              onClick={() => setIsMenuOpen(false)}
-            />
           </div>
 
           <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
@@ -576,13 +584,13 @@ function StoreButton({ label, href, iconSrc, className = "" }: StoreButtonProps)
 
 function DownloadCTA({ className = "", onClick }: DownloadCTAProps) {
   return (
-    <button
-      type="button"
+    <Link
+      href="/download-app"
       onClick={onClick}
       className={`whitespace-nowrap rounded-full border border-[#422774] px-6 py-3 text-[15px] font-semibold text-[#372161] transition hover:bg-[#372161] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#372161] md:px-5 md:py-2 md:text-[16px] ${className}`}
     >
       Download App
-    </button>
+    </Link>
   );
 }
 

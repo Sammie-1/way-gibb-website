@@ -6,46 +6,6 @@ import { useEffect, useState } from "react";
 
 const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact", "Download App"];
 
-// Maps product category items to their corresponding image assets
-const ITEM_IMAGES: Record<string, string> = {
-  "Phones": "/assets/phones.png",
-  "Laptops": "/assets/laptops.png",
-  "TVs": "/assets/TVs.png",
-  "Home Appliances": "/assets/home-appliances.png",
-  "Accessories": "/assets/accessories.png",
-  "Construction Tools": "/assets/construction-tools.png",
-  "Electrical Tools": "/assets/electrical-tools.png",
-  "Safety Gear": "/assets/safety-gear.png",
-  "Sand": "/assets/sand.png",
-  "Cements": "/assets/cement.png",
-  "Granite": "/assets/granite.png",
-  "Iron Rods": "/assets/iron-rods.png",
-  "Tiles": "/assets/tiles.png",
-  "Paints": "/assets/paints.png",
-  "Lighting": "/assets/lightning.png",
-  "Furniture": "/assets/furniture.png",
-  "Interior Finishes": "/assets/interior.png",
-};
-
-const CATEGORY_SECTIONS = [
-  {
-    title: "Electronics",
-    items: ["Phones", "Laptops", "TVs", "Home Appliances", "Accessories"],
-  },
-  {
-    title: "Tools & Equipment",
-    items: ["Construction Tools", "Electrical Tools", "Safety Gear"],
-  },
-  {
-    title: "Building Materials",
-    items: ["Sand", "Cements", "Granite", "Iron Rods", "Tiles"],
-  },
-  {
-    title: "Home Improvement",
-    items: ["Lighting", "Furniture", "Interior Finishes"],
-  },
-];
-
 // Generates navigation href based on menu item name
 const navHref = (item: string) => {
   switch (item) {
@@ -57,10 +17,10 @@ const navHref = (item: string) => {
       return "/services";
     case "Products":
       return "/products";
-    case "Download App":
-      return "/download-app";
     case "Contact":
       return "/contact";
+    case "Download App":
+      return "/download-app";
     default:
       return "/";
   }
@@ -73,7 +33,12 @@ type StoreButtonProps = {
   className?: string;
 };
 
-export default function ProductsPage() {
+type DownloadCTAProps = {
+  className?: string;
+  onClick?: () => void;
+};
+
+export default function DownloadApp() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Prevent body scroll when mobile menu is open
@@ -137,7 +102,7 @@ export default function ProductsPage() {
             <nav className="hidden items-center justify-center gap-4 rounded-[999px] bg-white/90 px-6 py-4 text-sm font-semibold text-[#3a3a3a] shadow-[0_12px_30px_rgba(55,33,97,0.08)] backdrop-blur md:flex lg:hidden">
               <div className="flex w-full items-center justify-center gap-8 overflow-x-auto px-2">
                 {NAV_ITEMS.map((item) => {
-                  const isActive = item === "Products";
+                  const isActive = item === "Download App";
                   const isDownloadApp = item === "Download App";
                   return (
                     <Link
@@ -161,7 +126,7 @@ export default function ProductsPage() {
             <nav className="relative z-30 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
               <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
                 {NAV_ITEMS.map((item) => {
-                  const isActive = item === "Products";
+                  const isActive = item === "Download App";
                   const isDownloadApp = item === "Download App";
                   return (
                     <Link
@@ -210,7 +175,7 @@ export default function ProductsPage() {
             </div>
             <div className="flex flex-col gap-3 px-2 text-lg font-semibold">
               {NAV_ITEMS.map((item) => {
-                const isActive = item === "Products";
+                const isActive = item === "Download App";
                 const isDownloadApp = item === "Download App";
                 return (
                   <Link
@@ -218,7 +183,7 @@ export default function ProductsPage() {
                     key={item}
                     className={`rounded-full px-6 py-4 text-left transition-colors ${
                       isDownloadApp
-                        ? "border-2 border-[#422774] text-center hover:bg-[#422774] hover:text-white"
+                        ? "border-2 border-[#422774] bg-[#422774] text-center text-white"
                         : isActive
                         ? "bg-[#372161] text-white"
                         : "text-[#3a3a3a] hover:text-[#372161]"
@@ -233,41 +198,118 @@ export default function ProductsPage() {
           </div>
 
           <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
-            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12">
-              <div className="space-y-7 px-1 md:space-y-8 md:px-0">
-                <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
+            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-8 md:gap-12">
+              <div className="space-y-6 px-1 md:space-y-8 md:px-0 lg:space-y-9">
+                <h1 className="text-[26px] font-[700] leading-[1.1] text-[#3a3a3a] sm:text-[30px] md:text-[34px] lg:text-[36px]">
                   <span className="block">
-                  Explore Our Product Categories
+                    Shop Smarter, Build Faster — With
                   </span>
+                  <span className="block">the WayGibb App</span>
                 </h1>
-                <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/85 sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
+
+                <div className="space-y-4 text-base leading-[1.6] text-[#3a3a3a] sm:text-lg md:text-[20px]">
                   <p className="m-0">
-                  Find everything you need — from everyday essentials to 
-                  construction supplies — all in one place on the WayGibb app.
+                    With our easy-to-use app, you can:
                   </p>
+
+                  <ul className="mt-2 space-y-3.5 sm:space-y-4">
+                    <li className="flex items-start gap-3.5 sm:gap-4">
+                      <span className="mt-1 inline-flex h-7 w-7 items-center justify-center">
+                        <Image
+                          src="/assets/octicon_tracked-by-closed-completed-24.svg"
+                          alt="List icon"
+                          width={20}
+                          height={20}
+                        />
+                      </span>
+                      <span className="text-base sm:text-lg md:text-[20px] leading-[1.45] text-[#3a3a3a]">
+                        Browse thousands of products
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3.5 sm:gap-4">
+                      <span className="mt-1 inline-flex h-7 w-7 items-center justify-center">
+                        <Image
+                          src="/assets/octicon_tracked-by-closed-completed-24.svg"
+                          alt="List icon"
+                          width={20}
+                          height={20}
+                        />
+                      </span>
+                      <span className="text-base sm:text-lg md:text-[20px] leading-[1.45] text-[#3a3a3a]">
+                        Track your deliveries in real-time
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3.5 sm:gap-4">
+                      <span className="mt-1 inline-flex h-7 w-7 items-center justify-center">
+                        <Image
+                          src="/assets/octicon_tracked-by-closed-completed-24.svg"
+                          alt="List icon"
+                          width={20}
+                          height={20}
+                        />
+                      </span>
+                      <span className="text-base sm:text-lg md:text-[20px] leading-[1.45] text-[#3a3a3a]">
+                        Access special app-only discounts
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3.5 sm:gap-4">
+                      <span className="mt-1 inline-flex h-7 w-7 items-center justify-center">
+                        <Image
+                          src="/assets/octicon_tracked-by-closed-completed-24.svg"
+                          alt="List icon"
+                          width={20}
+                          height={20}
+                        />
+                      </span>
+                      <span className="text-base sm:text-lg md:text-[20px] leading-[1.45] text-[#3a3a3a]">
+                        Chat directly with customer support
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div className="my-2 h-px w-full bg-[#d9d0f1] md:my-3" />
-              <div className="space-y-8 px-1 md:space-y-10 md:px-0">
-                <p className="text-lg font-semibold italic leading-[1.4] text-[#3a3a3a] sm:text-xl md:text-2xl">
-                  Download the WayGibb App to Order Now!
-                </p>
-                <div
-                  id="download"
-                  className="flex flex-row flex-wrap gap-4 md:gap-5"
-                >
-                  <StoreButton
-                    href="#download"
-                    label="App Store"
-                    iconSrc="/assets/logos_apple-app-store.svg"
-                    className="flex-1 min-w-[160px] justify-center sm:min-w-[200px] lg:flex-none"
-                  />
-                  <StoreButton
-                    href="#download"
-                    label="Play Store"
-                    iconSrc="/assets/logos_google-play-icon.svg"
-                    className="flex-1 min-w-[160px] justify-center sm:min-w-[200px] lg:flex-none"
-                  />
+
+              <div className="space-y-4 pt-2 md:space-y-6">
+                <div className="flex flex-wrap gap-4 md:gap-5">
+                  <button
+                    type="button"
+                    className="flex items-center gap-3 rounded-[16px] bg-[#f5f5f5] px-5 py-4 text-left shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:bg-[#ececec] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#422774]"
+                  >
+                    <span className="inline-flex h-12 w-12 items-center justify-center">
+                      <Image
+                        src="/assets/logos_apple-app-store.svg"
+                        alt="Apple App Store logo"
+                        width={48}
+                        height={48}
+                      />
+                    </span>
+                    <span className="leading-tight text-[#3a3a3a]">
+                      <span className="block text-sm">Download on</span>
+                      <span className="block text-base font-bold">
+                        App Store
+                      </span>
+                    </span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className="flex items-center gap-3 rounded-[16px] bg-[#f5f5f5] px-5 py-4 text-left shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:bg-[#ececec] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#422774]"
+                  >
+                    <span className="inline-flex h-12 w-12 items-center justify-center">
+                      <Image
+                        src="/assets/logos_google-play-icon.svg"
+                        alt="Google Play logo"
+                        width={48}
+                        height={48}
+                      />
+                    </span>
+                    <span className="leading-tight text-[#3a3a3a]">
+                      <span className="block text-sm">Download on</span>
+                      <span className="block text-base font-bold">
+                        Google Play
+                      </span>
+                    </span>
+                  </button>
                 </div>
               </div>
             </section>
@@ -276,8 +318,8 @@ export default function ProductsPage() {
 
         <div className="relative hidden lg:flex lg:items-start lg:justify-end lg:-mr-12 lg:-mt-8 xl:-mr-15 xl:-mt-12">
           <Image
-            src="/assets/product.png"
-            alt="WayGibb product showcase"
+            src="/assets/download-page.png"
+            alt="WayGibb app and product preview"
             width={600}
             height={600}
             className="w-[90%] h-auto object-contain"
@@ -285,51 +327,6 @@ export default function ProductsPage() {
           />
         </div>
       </div>
-
-      <section className="w-full bg-[#e9e6ed] py-10 sm:py-12 md:py-14 lg:py-16 mt-10 md:mt-16">
-        <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-12 px-6 sm:px-10 md:px-12 lg:px-12 xl:px-16">
-          {CATEGORY_SECTIONS.map((section) => (
-            <div key={section.title} className="space-y-6">
-              <div className="space-y-2">
-                <p className="text-[22px] font-bold text-[#422774] sm:text-[24px]">{section.title}</p>
-                <div className="h-[1px] w-full bg-[#d1443e]" />
-              </div>
-              <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-                {section.items.map((item) => {
-                  const imageSrc = ITEM_IMAGES[item];
-                  return (
-                    <div
-                      key={item}
-                      className="relative h-[294px] w-[266px] shrink-0 overflow-hidden rounded-[16px] bg-white shadow-[0px_1px_4px_rgba(0,0,0,0.04)]"
-                    >
-                      {imageSrc && (
-                        <div className="absolute inset-0">
-                          <Image
-                            src={imageSrc}
-                            alt={item}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      )}
-                      <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center justify-center gap-2 rounded-[8px] bg-white px-4 py-2.5 min-w-fit">
-                        <Image
-                          src="/assets/mage_stars-b.png"
-                          alt=""
-                          width={26}
-                          height={26}
-                          className="h-[26px] w-[26px] shrink-0"
-                        />
-                        <p className="whitespace-nowrap text-center text-[18px] font-extrabold leading-[1] text-[#3a3a3a] sm:text-[20px]">{item}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <footer className="bg-[#0f002f] px-6 py-12 sm:px-10 md:px-12 md:py-14 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-[1400px]">
@@ -345,7 +342,8 @@ export default function ProductsPage() {
                 />
               </div>
               <p className="text-sm font-medium leading-[1.5] tracking-[-0.28px] text-[#f8f8f8]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius elementum tristique..
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse varius elementum tristique..
               </p>
             </div>
 
@@ -355,16 +353,28 @@ export default function ProductsPage() {
                   Quick Link
                 </h3>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="#" className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white">
+                  <Link
+                    href="#"
+                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
+                  >
                     Home
                   </Link>
-                  <Link href="#" className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white">
+                  <Link
+                    href="#"
+                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
+                  >
                     About
                   </Link>
-                  <Link href="#" className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white">
+                  <Link
+                    href="#"
+                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
+                  >
                     Service
                   </Link>
-                  <Link href="#" className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white">
+                  <Link
+                    href="#"
+                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
+                  >
                     Contact
                   </Link>
                 </div>
@@ -375,10 +385,16 @@ export default function ProductsPage() {
                   Contact
                 </h3>
                 <div className="flex flex-col gap-4">
-                  <a href="mailto:support@waygibb.com" className="text-sm font-medium leading-[1.5] text-[#fefefe] transition-colors hover:text-white">
+                  <a
+                    href="mailto:support@waygibb.com"
+                    className="text-sm font-medium leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
+                  >
                     support@waygibb.com
                   </a>
-                  <a href="tel:+2349012345678" className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white">
+                  <a
+                    href="tel:+2349012345678"
+                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
+                  >
                     +234 901 234 5678
                   </a>
                   <p className="max-w-[235px] text-sm font-normal leading-[1.5] text-[#fefefe]">
@@ -392,7 +408,11 @@ export default function ProductsPage() {
                   Social Link
                 </h3>
                 <div className="flex items-center gap-4">
-                  <Link href="#" className="transition-opacity hover:opacity-80" aria-label="LinkedIn">
+                  <Link
+                    href="#"
+                    className="transition-opacity hover:opacity-80"
+                    aria-label="LinkedIn"
+                  >
                     <Image
                       src="/assets/footer/linkedin-icon.svg"
                       alt=""
@@ -401,7 +421,11 @@ export default function ProductsPage() {
                       className="h-7 w-7"
                     />
                   </Link>
-                  <Link href="#" className="transition-opacity hover:opacity-80" aria-label="Facebook">
+                  <Link
+                    href="#"
+                    className="transition-opacity hover:opacity-80"
+                    aria-label="Facebook"
+                  >
                     <Image
                       src="/assets/footer/facebook-icon.svg"
                       alt=""
@@ -410,7 +434,11 @@ export default function ProductsPage() {
                       className="h-7 w-7"
                     />
                   </Link>
-                  <Link href="#" className="transition-opacity hover:opacity-80" aria-label="Instagram">
+                  <Link
+                    href="#"
+                    className="transition-opacity hover:opacity-80"
+                    aria-label="Instagram"
+                  >
                     <Image
                       src="/assets/footer/instagram-icon.svg"
                       alt=""
@@ -419,7 +447,11 @@ export default function ProductsPage() {
                       className="h-7 w-7"
                     />
                   </Link>
-                  <Link href="#" className="transition-opacity hover:opacity-80" aria-label="X (Twitter)">
+                  <Link
+                    href="#"
+                    className="transition-opacity hover:opacity-80"
+                    aria-label="X (Twitter)"
+                  >
                     <Image
                       src="/assets/footer/x-icon.svg"
                       alt=""
@@ -455,8 +487,23 @@ function StoreButton({ label, href, iconSrc, className = "" }: StoreButtonProps)
       <span className="inline-flex size-8 items-center justify-center md:size-8">
         <Image src={iconSrc} alt="" width={26} height={26} />
       </span>
-      <span className="text-base font-extrabold leading-none md:text-lg">{label}</span>
+      <span className="text-base font-extrabold leading-none md:text-lg">
+        {label}
+      </span>
     </Link>
   );
 }
+
+function DownloadCTA({ className = "", onClick }: DownloadCTAProps) {
+  return (
+    <Link
+      href="/download-app"
+      onClick={onClick}
+      className={`pointer-events-auto whitespace-nowrap rounded-full border border-[#422774] px-6 py-3 text-[15px] font-semibold text-[#372161] transition hover:bg-[#372161] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#372161] md:px-5 md:py-2 md:text-[16px] ${className}`}
+    >
+      Download App
+    </Link>
+  );
+}
+
 
