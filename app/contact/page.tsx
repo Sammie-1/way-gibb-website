@@ -77,7 +77,7 @@ type DownloadCTAProps = {
 
 export default function ContactPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (!isMenuOpen) {
