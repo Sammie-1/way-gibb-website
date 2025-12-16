@@ -119,19 +119,16 @@ export default function ContactPage() {
                 onClick={() => setIsMenuOpen((prev) => !prev)}
               >
                 <span
-                  className={`h-[2px] w-6 bg-current transition-transform ${
-                    isMenuOpen ? "translate-y-[6px] rotate-45" : ""
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""
+                    }`}
                 />
                 <span
-                  className={`h-[2px] w-6 bg-current transition-opacity ${
-                    isMenuOpen ? "opacity-0" : "opacity-100"
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"
+                    }`}
                 />
                 <span
-                  className={`h-[2px] w-6 bg-current transition-transform ${
-                    isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
+                    }`}
                 />
               </button>
             </div>
@@ -145,13 +142,12 @@ export default function ContactPage() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`whitespace-nowrap px-1 py-2 transition-colors ${
-                        isDownloadApp
+                      className={`whitespace-nowrap px-1 py-2 transition-colors ${isDownloadApp
                           ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
                           : isActive
-                          ? "border-b-2 border-[#2c1a4d] text-[#372161]"
-                          : "text-[#3a3a3a] hover:text-[#372161]"
-                      }`}
+                            ? "border-b-2 border-[#2c1a4d] text-[#372161]"
+                            : "text-[#3a3a3a] hover:text-[#372161]"
+                        }`}
                     >
                       {item}
                     </Link>
@@ -169,13 +165,12 @@ export default function ContactPage() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`relative z-50 transition-colors whitespace-nowrap ${
-                        isDownloadApp
+                      className={`relative z-50 transition-colors whitespace-nowrap ${isDownloadApp
                           ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
                           : isActive
-                          ? "pb-1 border-b-2 border-[#2c1a4d] text-[#372161]"
-                          : "pb-1 text-[#3a3a3a] hover:text-[#372161]"
-                      }`}
+                            ? "pb-1 border-b-2 border-[#2c1a4d] text-[#372161]"
+                            : "pb-1 text-[#3a3a3a] hover:text-[#372161]"
+                        }`}
                     >
                       {item}
                     </Link>
@@ -186,11 +181,10 @@ export default function ContactPage() {
           </header>
 
           <div
-            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-white px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${
-              isMenuOpen
+            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-white px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen
                 ? "translate-x-0 opacity-100"
                 : "pointer-events-none translate-x-full opacity-0"
-            }`}
+              }`}
           >
             <div className="flex items-center justify-between py-2">
               <Image
@@ -218,13 +212,12 @@ export default function ContactPage() {
                   <Link
                     href={navHref(item)}
                     key={item}
-                    className={`rounded-full px-6 py-4 text-left transition-colors ${
-                      isDownloadApp
+                    className={`rounded-full px-6 py-4 text-left transition-colors ${isDownloadApp
                         ? "border-2 border-[#422774] text-center hover:bg-[#422774] hover:text-white"
                         : isActive
-                        ? "bg-[#372161] text-white"
-                        : "text-[#3a3a3a] hover:text-[#372161]"
-                    }`}
+                          ? "bg-[#372161] text-white"
+                          : "text-[#3a3a3a] hover:text-[#372161]"
+                      }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item}
@@ -236,7 +229,7 @@ export default function ContactPage() {
 
           <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
             {/* Hero copied from About page, with text tailored for Contact */}
-            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12">
+            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12" data-aos="fade-up">
               <div className="space-y-7 px-1 md:space-y-8 md:px-0">
                 <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
                   <span className="block">We&apos;d Love to Hear From You</span>
@@ -322,7 +315,7 @@ export default function ContactPage() {
           </main>
         </div>
 
-        <div className="relative hidden lg:flex lg:-mr-12 lg:-mt-8 lg:items-start lg:justify-end xl:-mr-15 xl:-mt-12">
+        <div className="relative hidden lg:flex lg:-mr-12 lg:-mt-8 lg:items-start lg:justify-end xl:-mr-15 xl:-mt-12" data-aos="fade-left">
           <Image
             src="/assets/contact.png"
             alt="WayGibb support team collage"
@@ -335,7 +328,7 @@ export default function ContactPage() {
       </div>
 
       {/* Contact details + form section */}
-      <section className="bg-[#f9f7ff] px-6 py-16 sm:px-10 md:px-12 lg:px-16 flex items-center">
+      <section className="bg-[#f9f7ff] px-6 py-16 sm:px-10 md:px-12 lg:px-16 flex items-center" data-aos="fade-up">
         <div className="mx-auto max-w-[1200px]">
           <div className="grid gap-6 md:grid-cols-2 md:gap-8">
             {/* Left: contact info card */}
@@ -516,7 +509,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ section */}
-      <section className="bg-gradient-to-br from-white to-[#f5f1ff] px-6 py-20 sm:px-10 md:px-12 md:py-24 lg:px-16 lg:py-28">
+      <section className="bg-gradient-to-br from-white to-[#f5f1ff] px-6 py-20 sm:px-10 md:px-12 md:py-24 lg:px-16 lg:py-28" data-aos="fade-up">
         <div className="relative mx-auto max-w-[1200px] overflow-hidden pb-16">
           <Image
             src="/assets/Line 140.png"
@@ -564,9 +557,8 @@ export default function ContactPage() {
                     </p>
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-transparent text-[#d1443e]">
                       <span
-                        className={`inline-block h-2.5 w-2.5 rotate-45 border-b-2 border-r-2 border-[#d1443e] transition-transform duration-200 ${
-                          isOpen ? "rotate-[225deg]" : ""
-                        }`}
+                        className={`inline-block h-2.5 w-2.5 rotate-45 border-b-2 border-r-2 border-[#d1443e] transition-transform duration-200 ${isOpen ? "rotate-[225deg]" : ""
+                          }`}
                       />
                     </span>
                   </button>

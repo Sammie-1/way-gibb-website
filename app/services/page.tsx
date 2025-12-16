@@ -82,19 +82,16 @@ export default function Services() {
                 onClick={() => setIsMenuOpen((prev) => !prev)}
               >
                 <span
-                  className={`h-[2px] w-6 bg-current transition-transform ${
-                    isMenuOpen ? "translate-y-[6px] rotate-45" : ""
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""
+                    }`}
                 />
                 <span
-                  className={`h-[2px] w-6 bg-current transition-opacity ${
-                    isMenuOpen ? "opacity-0" : "opacity-100"
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"
+                    }`}
                 />
                 <span
-                  className={`h-[2px] w-6 bg-current transition-transform ${
-                    isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
+                    }`}
                 />
               </button>
             </div>
@@ -108,13 +105,12 @@ export default function Services() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`whitespace-nowrap px-1 py-2 transition-colors ${
-                        isDownloadApp
+                      className={`whitespace-nowrap px-1 py-2 transition-colors ${isDownloadApp
                           ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
                           : isActive
-                          ? "border-b-2 border-[#2c1a4d] text-[#372161]"
-                          : "text-[#3a3a3a] hover:text-[#372161]"
-                      }`}
+                            ? "border-b-2 border-[#2c1a4d] text-[#372161]"
+                            : "text-[#3a3a3a] hover:text-[#372161]"
+                        }`}
                     >
                       {item}
                     </Link>
@@ -132,13 +128,12 @@ export default function Services() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`relative z-50 transition-colors whitespace-nowrap ${
-                        isDownloadApp
+                      className={`relative z-50 transition-colors whitespace-nowrap ${isDownloadApp
                           ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
                           : isActive
-                          ? "pb-1 border-b-2 border-[#2c1a4d] text-[#372161]"
-                          : "pb-1 text-[#3a3a3a] hover:text-[#372161]"
-                      }`}
+                            ? "pb-1 border-b-2 border-[#2c1a4d] text-[#372161]"
+                            : "pb-1 text-[#3a3a3a] hover:text-[#372161]"
+                        }`}
                     >
                       {item}
                     </Link>
@@ -150,11 +145,10 @@ export default function Services() {
 
           {/* Mobile nav overlay (copied from home) */}
           <div
-            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${
-              isMenuOpen
+            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen
                 ? "translate-x-0 opacity-100"
                 : "pointer-events-none translate-x-full opacity-0"
-            }`}
+              }`}
           >
             <div className="flex items-center justify-between py-2">
               <Image
@@ -182,13 +176,12 @@ export default function Services() {
                   <Link
                     href={navHref(item)}
                     key={item}
-                    className={`rounded-full px-6 py-4 text-left transition-colors ${
-                      isDownloadApp
+                    className={`rounded-full px-6 py-4 text-left transition-colors ${isDownloadApp
                         ? "border-2 border-[#422774] text-center hover:bg-[#422774] hover:text-white"
                         : isActive
-                        ? "bg-[#372161] text-white"
-                        : "text-[#3a3a3a] hover:text-[#372161]"
-                    }`}
+                          ? "bg-[#372161] text-white"
+                          : "text-[#3a3a3a] hover:text-[#372161]"
+                      }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item}
@@ -200,7 +193,7 @@ export default function Services() {
 
           {/* Hero section (copied from home) */}
           <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
-            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12">
+            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12" data-aos="fade-up">
               <div className="space-y-7 px-1 md:space-y-8 md:px-0">
                 <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
                   <span className="block">
@@ -209,8 +202,8 @@ export default function Services() {
                 </h1>
                 <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/85 sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
                   <p className="m-0">
-                  From flexible payments to fast deliveries, WayGibb provides <br/>
-                seamless solutions that make shopping smarter, easier, and <br/> more rewarding.
+                    From flexible payments to fast deliveries, WayGibb provides <br />
+                    seamless solutions that make shopping smarter, easier, and <br /> more rewarding.
                   </p>
                 </div>
               </div>
@@ -242,9 +235,9 @@ export default function Services() {
         </div>
 
         {/* Hero side image (copied from home) */}
-        <div className="relative hidden lg:flex lg:items-start lg:justify-end lg:-mr-12 lg:-mt-8 xl:-mr-15 xl:-mt-12">
+        <div className="relative hidden lg:flex lg:items-start lg:justify-end lg:-mr-12 lg:-mt-8 xl:-mr-15 xl:-mt-12" data-aos="fade-left">
           <Image
-          src="/assets/Home.png"
+            src="/assets/Home.png"
             alt="WayGibb product showcase"
             width={600}
             height={600}
@@ -258,9 +251,9 @@ export default function Services() {
       <section className="bg-[#e9e6ed] px-6 py-16 sm:px-10 md:px-12 lg:px-12 xl:px-16">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-10 lg:gap-12">
           {/* Electronics Sales - wide card */}
-          <div className="relative overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-2xl" data-aos="fade-up">
             <div className="relative h-[260px] sm:h-[320px] md:h-[360px] lg:h-[420px]">
-            <Image
+              <Image
                 src="/assets/first-card.png"
                 alt="Electronics in a shopping cart"
                 fill
@@ -284,16 +277,16 @@ export default function Services() {
           </div>
 
           {/* Middle row: three service cards */}
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3" data-aos="fade-up">
             {/* Doorstep Delivery */}
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[360px]">
-              <Image
-                src="/assets/mini-card.png"
-                alt="Packages ready for delivery"
-                fill
-                className="object-cover"
-              />
+                <Image
+                  src="/assets/mini-card.png"
+                  alt="Packages ready for delivery"
+                  fill
+                  className="object-cover"
+                />
                 <div className="absolute inset-0 rounded-2xl bg-[rgba(0,0,0,0.2)]" />
 
                 <div className="absolute inset-x-4 bottom-6 sm:inset-x-5 sm:bottom-7">
@@ -314,12 +307,12 @@ export default function Services() {
             {/* Wholesale Orders */}
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[360px]">
-              <Image
-                src="/assets/mini-card.png"
-                alt="Wholesale packages in cart"
-                fill
-                className="object-cover"
-              />
+                <Image
+                  src="/assets/mini-card.png"
+                  alt="Wholesale packages in cart"
+                  fill
+                  className="object-cover"
+                />
                 <div className="absolute inset-0 rounded-2xl bg-[rgba(0,0,0,0.2)]" />
 
                 <div className="absolute inset-x-4 bottom-6 sm:inset-x-5 sm:bottom-7">
@@ -339,12 +332,12 @@ export default function Services() {
             {/* Online Ordering */}
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative h-[260px] sm:h-[300px] md:h-[340px] lg:h-[360px]">
-              <Image
-                src="/assets/mini-card.png"
-                alt="Online shopping cart"
-                fill
-                className="object-cover"
-              />
+                <Image
+                  src="/assets/mini-card.png"
+                  alt="Online shopping cart"
+                  fill
+                  className="object-cover"
+                />
                 <div className="absolute inset-0 rounded-2xl bg-[rgba(0,0,0,0.2)]" />
 
                 <div className="absolute inset-x-4 bottom-6 sm:inset-x-5 sm:bottom-7">
@@ -363,9 +356,9 @@ export default function Services() {
           </div>
 
           {/* Building Materials Supply - wide card */}
-          <div className="relative overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-2xl" data-aos="fade-up">
             <div className="relative h-[260px] sm:h-[320px] md:h-[360px] lg:h-[420px]">
-            <Image
+              <Image
                 src="/assets/last-card.png"
                 alt="Building materials in cart"
                 fill

@@ -60,93 +60,87 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f9f7ff] text-[#3a3a3a]">
       <div className="relative flex min-h-screen w-full flex-col gap-8 px-6 pb-20 pt-6 sm:gap-10 sm:px-10 md:px-12 md:pb-24 md:pt-8 lg:grid lg:grid-cols-2 lg:gap-12 lg:px-12 xl:gap-16 xl:px-16">
-        
+
         <div className="flex flex-col gap-8 sm:gap-10">
-        <header className="relative flex flex-col gap-5 md:gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-          <div className="flex items-center gap-4 py-2 md:py-0 lg:py-0">
-            <Image
-              src="/assets/waygibb/logo.png"
-              alt="WayGibb logo"
-              width={270}
-              height={120}
-              priority
-              className="h-[110px] w-auto sm:h-[130px] lg:h-[100px]"
-            />
-            <button
-              type="button"
-              aria-label="Toggle navigation"
-              className="ml-auto flex h-12 w-12 flex-col items-center justify-center gap-1 rounded-full border border-[#372161] text-[#372161] sm:hidden"
-              onClick={() => setIsMenuOpen((prev) => !prev)}
-            >
-              <span
-                className={`h-[2px] w-6 bg-current transition-transform ${
-                  isMenuOpen ? "translate-y-[6px] rotate-45" : ""
-                }`}
+          <header className="relative flex flex-col gap-5 md:gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+            <div className="flex items-center gap-4 py-2 md:py-0 lg:py-0">
+              <Image
+                src="/assets/waygibb/logo.png"
+                alt="WayGibb logo"
+                width={270}
+                height={120}
+                priority
+                className="h-[110px] w-auto sm:h-[130px] lg:h-[100px]"
               />
-              <span
-                className={`h-[2px] w-6 bg-current transition-opacity ${
-                  isMenuOpen ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`h-[2px] w-6 bg-current transition-transform ${
-                  isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
-                }`}
-              />
-            </button>
-          </div>
+              <button
+                type="button"
+                aria-label="Toggle navigation"
+                className="ml-auto flex h-12 w-12 flex-col items-center justify-center gap-1 rounded-full border border-[#372161] text-[#372161] sm:hidden"
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+              >
+                <span
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""
+                    }`}
+                />
+                <span
+                  className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"
+                    }`}
+                />
+                <span
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
+                    }`}
+                />
+              </button>
+            </div>
 
-          <nav className="hidden items-center justify-center gap-4 rounded-[999px] bg-white/90 px-6 py-4 text-sm font-semibold text-[#3a3a3a] shadow-[0_12px_30px_rgba(55,33,97,0.08)] backdrop-blur md:flex lg:hidden">
-            <div className="flex w-full items-center justify-center gap-8 overflow-x-auto px-2">
-              {NAV_ITEMS.map((item) => {
-                const isActive = item === "Home";
-                return (
-                  <Link
-                    href={navHref(item)}
-                    key={item}
-                    className={`whitespace-nowrap px-1 py-2 transition-colors ${
-                      isActive
+            <nav className="hidden items-center justify-center gap-4 rounded-[999px] bg-white/90 px-6 py-4 text-sm font-semibold text-[#3a3a3a] shadow-[0_12px_30px_rgba(55,33,97,0.08)] backdrop-blur md:flex lg:hidden">
+              <div className="flex w-full items-center justify-center gap-8 overflow-x-auto px-2">
+                {NAV_ITEMS.map((item) => {
+                  const isActive = item === "Home";
+                  return (
+                    <Link
+                      href={navHref(item)}
+                      key={item}
+                      className={`whitespace-nowrap px-1 py-2 transition-colors ${isActive
                         ? "border-b-2 border-[#2c1a4d] text-[#372161]"
                         : "text-[#3a3a3a] hover:text-[#372161]"
-                    }`}
-                  >
-                    {item}
-                  </Link>
-                );
-              })}
-            </div>
-          </nav>
+                        }`}
+                    >
+                      {item}
+                    </Link>
+                  );
+                })}
+              </div>
+            </nav>
 
-          <nav className="relative z-50 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
-            <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
-              {NAV_ITEMS.map((item) => {
-                const isActive = item === "Home";
-                return (
-                  <Link
-                    href={navHref(item)}
-                    key={item}
-                    className={`relative z-50 pb-1 transition-colors whitespace-nowrap ${
-                      isActive
+            <nav className="relative z-50 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
+              <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
+                {NAV_ITEMS.map((item) => {
+                  const isActive = item === "Home";
+                  return (
+                    <Link
+                      href={navHref(item)}
+                      key={item}
+                      className={`relative z-50 pb-1 transition-colors whitespace-nowrap ${isActive
                         ? "border-b-2 border-[#2c1a4d] text-[#372161]"
                         : "text-[#3a3a3a] hover:text-[#372161]"
-                    }`}
-                  >
-                    {item}
-                  </Link>
-                );
-              })}
-            </div>
-            <DownloadCTA />
-          </nav>
-        </header>
+                        }`}
+                    >
+                      {item}
+                    </Link>
+                  );
+                })}
+              </div>
+              <DownloadCTA />
+            </nav>
+          </header>
 
-        <div 
-          className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${
-            isMenuOpen 
-              ? 'translate-x-0 opacity-100' 
+          <div
+            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen
+              ? 'translate-x-0 opacity-100'
               : 'pointer-events-none translate-x-full opacity-0'
-          }`}
-        >
+              }`}
+          >
             <div className="flex items-center justify-between py-2">
               <Image
                 src="/assets/waygibb/logo.png"
@@ -172,11 +166,10 @@ export default function Home() {
                   <Link
                     href={navHref(item)}
                     key={item}
-                    className={`rounded-full px-6 py-4 text-left transition-colors ${
-                      isActive
-                        ? "bg-[#372161] text-white"
-                        : "text-[#3a3a3a] hover:text-[#372161]"
-                    }`}
+                    className={`rounded-full px-6 py-4 text-left transition-colors ${isActive
+                      ? "bg-[#372161] text-white"
+                      : "text-[#3a3a3a] hover:text-[#372161]"
+                      }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item}
@@ -185,54 +178,54 @@ export default function Home() {
               })}
             </div>
             <DownloadCTA className="w-full justify-center" onClick={() => setIsMenuOpen(false)} />
-        </div>
+          </div>
 
-        <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
-          <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12">
-            <div className="space-y-7 px-1 md:space-y-8 md:px-0">
-              <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
-                <span className="block">
-                  Get Everything You Need - From
-                </span>
-                <span className="block">
-                  Gadgets to Building Materials
-                </span>
-              </h1>
-              <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/85 sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
-                <p className="m-0">
-                  WayGibb makes shopping easier. Whether you&apos;re buying the <br/>latest electronics or sourcing building materials like sand, <br/> cement, and granite, we deliver straight to your doorstep — <br/> fast, affordable, and reliable.
+          <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
+            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12" data-aos="fade-up">
+              <div className="space-y-7 px-1 md:space-y-8 md:px-0">
+                <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
+                  <span className="block">
+                    Get Everything You Need - From
+                  </span>
+                  <span className="block">
+                    Gadgets to Building Materials
+                  </span>
+                </h1>
+                <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/85 sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
+                  <p className="m-0">
+                    WayGibb makes shopping easier. Whether you&apos;re buying the <br />latest electronics or sourcing building materials like sand, <br /> cement, and granite, we deliver straight to your doorstep — <br /> fast, affordable, and reliable.
+                  </p>
+                </div>
+              </div>
+              <div className="my-2 h-px w-full bg-[#d9d0f1] md:my-3" />
+              <div className="space-y-8 px-1 md:space-y-10 md:px-0">
+                <p className="text-lg font-semibold italic leading-[1.4] text-[#3a3a3a] sm:text-xl md:text-2xl">
+                  Download the WayGibb App to Order Now!
                 </p>
+                <div
+                  id="download"
+                  className="flex flex-row flex-wrap gap-4 md:gap-5"
+                >
+                  <StoreButton
+                    href="#download"
+                    label="App Store"
+                    iconSrc="/assets/logos_apple-app-store.svg"
+                    className="flex-1 min-w-[160px] justify-center sm:min-w-[200px] lg:flex-none"
+                  />
+                  <StoreButton
+                    href="#download"
+                    label="Play Store"
+                    iconSrc="/assets/logos_google-play-icon.svg"
+                    className="flex-1 min-w-[160px] justify-center sm:min-w-[200px] lg:flex-none"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="my-2 h-px w-full bg-[#d9d0f1] md:my-3" />
-            <div className="space-y-8 px-1 md:space-y-10 md:px-0">
-              <p className="text-lg font-semibold italic leading-[1.4] text-[#3a3a3a] sm:text-xl md:text-2xl">
-                Download the WayGibb App to Order Now!
-              </p>
-              <div
-                id="download"
-                className="flex flex-row flex-wrap gap-4 md:gap-5"
-              >
-                <StoreButton
-                  href="#download"
-                  label="App Store"
-                  iconSrc="/assets/logos_apple-app-store.svg"
-                  className="flex-1 min-w-[160px] justify-center sm:min-w-[200px] lg:flex-none"
-                />
-                <StoreButton
-                  href="#download"
-                  label="Play Store"
-                  iconSrc="/assets/logos_google-play-icon.svg"
-                  className="flex-1 min-w-[160px] justify-center sm:min-w-[200px] lg:flex-none"
-                />
-              </div>
-            </div>
-          </section>
-        </main>
+            </section>
+          </main>
         </div>
 
-        
-        <div className="relative hidden lg:flex lg:items-start lg:justify-end lg:-mr-12 lg:-mt-8 xl:-mr-15 xl:-mt-12">
+
+        <div className="relative hidden lg:flex lg:items-start lg:justify-end lg:-mr-12 lg:-mt-8 xl:-mr-15 xl:-mt-12" data-aos="fade-left">
           <Image
             src="/assets/Home.png"
             alt="WayGibb product showcase"
@@ -244,21 +237,21 @@ export default function Home() {
         </div>
       </div>
 
-      
+
       <section className="bg-[rgba(217,212,227,0.45)] px-6 py-16 sm:px-10 md:px-12 md:py-20 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-[1400px]">
-          
-          <div className="flex flex-col gap-6 lg:flex-row">
-            
+
+          <div className="flex flex-col gap-6 lg:flex-row" data-aos="fade-up">
+
             <div className="flex-1">
-              
+
               <div className="mb-6 inline-flex items-center justify-center rounded-[24px] border border-solid border-[#3a3a3a] px-4 py-2">
                 <p className="text-center text-base font-semibold text-[#3a3a3a] whitespace-nowrap">
                   Why choose us
                 </p>
               </div>
 
-              
+
               <div className="mb-12 max-w-[502px] space-y-4">
                 <h2 className="text-2xl font-bold text-[#422774] sm:text-3xl md:text-4xl">
                   Your All-in-One Store for Quality and Speed
@@ -268,30 +261,30 @@ export default function Home() {
                 </p>
               </div>
 
-              
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                
+
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2" data-aos="fade-up">
+
                 <FeatureCard
                   icon={<DeliveryIcon />}
                   title="Doorstep Delivery"
                   description="We bring your orders directly to your home or project site."
                 />
 
-                
+
                 <FeatureCard
                   icon={<PriceIcon />}
                   title="Affordable Prices"
                   description="Get the best deals and discounts on quality products."
                 />
 
-                
+
                 <FeatureCard
                   icon={<PhoneIcon />}
                   title="Easy Ordering"
                   description="Shop conveniently through our user-friendly mobile app."
                 />
 
-                
+
                 <FeatureCard
                   icon={<UsersIcon />}
                   title="Trusted Vendors"
@@ -300,7 +293,7 @@ export default function Home() {
               </div>
             </div>
 
-            
+
             <div className="w-full lg:w-[415px]">
               <div className="relative flex h-full min-h-[500px] flex-col overflow-hidden rounded-2xl bg-white shadow-[0px_2px_13px_0px_rgba(0,0,0,0.18)] lg:min-h-[689px]">
                 <div className="space-y-4 px-8 pt-8">
@@ -321,9 +314,9 @@ export default function Home() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                
+
                 <svg className="pointer-events-none absolute bottom-[18px] right-[15px] h-[220px] w-[350px]" viewBox="0 0 350 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 220 L340 220 Q348 220 348 212 L348 0" stroke="#AE3934" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                  <path d="M0 220 L340 220 Q348 220 348 212 L348 0" stroke="#AE3934" strokeWidth="2" fill="none" strokeLinecap="round" />
                 </svg>
               </div>
             </div>
@@ -331,20 +324,20 @@ export default function Home() {
         </div>
       </section>
 
-      
+
       <section className="bg-white px-6 py-16 sm:px-10 md:px-12 md:py-20 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-[1400px]">
           <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
-            
+
             <div className="flex-1">
-              
+
               <div className="mb-6 inline-flex items-center justify-center rounded-[24px] border border-solid border-[#3a3a3a] px-4 py-2">
                 <p className="text-center text-base font-semibold text-[#3a3a3a] whitespace-nowrap">
                   Top Categories
                 </p>
               </div>
 
-              
+
               <div className="mb-8 space-y-4 md:mb-12">
                 <h2 className="text-2xl font-bold text-[#422774] sm:text-3xl md:text-4xl">
                   Explore Our Top Categories
@@ -354,7 +347,7 @@ export default function Home() {
                 </p>
               </div>
 
-              
+
               <div className="flex flex-col gap-4">
                 <CategoryItem title="Building Materials" isActive />
                 <CategoryItem title="Electronics" />
@@ -364,26 +357,26 @@ export default function Home() {
               </div>
             </div>
 
-            
+
             <div className="lg:hidden">
               <CategoryImageSliderHorizontal />
             </div>
 
-            
+
             <div className="hidden lg:flex lg:gap-6">
-              
+
               <CategoryImageSlider />
 
-              
+
               <CategoryImageSliderReverse />
             </div>
           </div>
         </div>
       </section>
 
-      
+
       <section className="relative overflow-hidden bg-[rgba(217,212,227,0.45)] px-6 py-16 sm:px-10 md:px-12 md:py-20 lg:px-12 xl:px-16">
-        
+
         <div className="pointer-events-none absolute right-0 top-0 hidden h-[80%] mt-40 w-auto opacity-30 lg:block">
           <Image
             src="/assets/Line 139.png"
@@ -396,16 +389,16 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto max-w-[1400px]">
           <div className="flex flex-col gap-8 lg:flex-row lg:gap-16">
-            
+
             <div className="flex-1 lg:max-w-[502px]">
-              
+
               <div className="mb-6 inline-flex items-center justify-center rounded-[24px] border border-solid border-[#3a3a3a] px-4 py-2">
                 <p className="text-center text-base font-semibold text-[#3a3a3a] whitespace-nowrap">
                   How It Works:
                 </p>
               </div>
 
-              
+
               <div className="space-y-3 md:space-y-4">
                 <h2 className="text-2xl font-bold text-[#422774] sm:text-3xl md:text-4xl">
                   Shop in 4 Simple Steps
@@ -416,42 +409,46 @@ export default function Home() {
               </div>
             </div>
 
-            
+
             <div className="flex flex-col gap-3.5 lg:ml-auto lg:mt-40 lg:w-[552px] lg:flex-none">
               <HowItWorksCard
                 icon="/assets/download.svg"
                 text="Download the WayGibb App"
+                delay={0}
               />
               <HowItWorksCard
                 icon="/assets/iconoir_cart.svg"
                 text="Choose your items"
+                delay={100}
               />
               <HowItWorksCard
                 icon="/assets/cash_payment.svg"
                 text="Make payment or pay on delivery (where applicable)"
+                delay={200}
               />
               <HowItWorksCard
                 icon="/assets/monitor_outline.svg"
                 text="Relax while we deliver to your doorstep"
+                delay={300}
               />
             </div>
           </div>
         </div>
       </section>
 
-      
+
       <section className="bg-white px-6 py-16 sm:px-10 md:px-12 md:py-20 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-[1400px]">
-          
+
           <div className="mb-12 md:mb-16">
-            
+
             <div className="mb-6 inline-flex items-center justify-center rounded-[24px] border border-solid border-[#3a3a3a] px-4 py-2">
               <p className="text-center text-base font-semibold text-[#3a3a3a] whitespace-nowrap">
                 Customer Testimonials
               </p>
             </div>
 
-            
+
             <div className="max-w-[502px] space-y-3 md:space-y-4">
               <h2 className="text-2xl font-bold text-[#422774] sm:text-3xl md:text-4xl">
                 Trusted by Shoppers Nationwide
@@ -462,9 +459,9 @@ export default function Home() {
             </div>
           </div>
 
-          
+
           <div className="grid grid-cols-1 gap-5 md:grid-cols-4 lg:grid-cols-4 xl:gap-6">
-            
+
             <TestimonialCard
               quote="My order arrived earlier than expected, and the packaging was perfect. I'll definitely shop again."
               name="Sarah A.,"
@@ -473,7 +470,7 @@ export default function Home() {
               size="small"
             />
 
-            
+
             <TestimonialCard
               quote="I ordered a new smartphone on WayGibb, and the whole process was surprisingly smooth. The app kept me updated from payment to delivery, so I always knew where my order was. The phone arrived in perfect condition, neatly packaged, and right on schedule."
               name="Olamide A.,"
@@ -484,7 +481,7 @@ export default function Home() {
               className="md:col-span-2 shadow-[0px_2px_13px_0px_rgba(0,0,0,0.18)]"
             />
 
-            
+
             <TestimonialCard
               quote="Got 6 trucks of sand delivered easily! Didn't expect it to be that simple. Ordered, confirmed, and boom — everything arrived without stress."
               name="Kunle O"
@@ -493,7 +490,7 @@ export default function Home() {
               size="small"
             />
 
-            
+
             <TestimonialCard
               quote="I used WayGibb to get sand, cement, and blocks for my renovation project, and it was stress-free from start to finish. The delivery was fast, and everything arrived exactly as I ordered. It saved me so much time and transport hassle — I'm definitely using them again."
               name="Olamide A.,"
@@ -504,7 +501,7 @@ export default function Home() {
               className="md:col-span-2"
             />
 
-            
+
             <TestimonialCard
               quote="Smooth experience from start to finish. I got both tiles and paint in one order. The delivery guys were polite and careful with everything."
               name="Ruth I.,"
@@ -513,7 +510,7 @@ export default function Home() {
               size="small"
             />
 
-            
+
             <TestimonialCard
               quote="I've used WayGibb multiple times now, and they've never disappointed. Consistency is key!"
               name="Aisha T.,"
@@ -525,11 +522,11 @@ export default function Home() {
         </div>
       </section>
 
-      
+
       <footer className="bg-[#0f002f] px-6 py-12 sm:px-10 md:px-12 md:py-14 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-[1400px]">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
-            
+
             <div className="flex max-w-[299px] flex-col gap-5">
               <div className="h-20 w-[206px]">
                 <Image
@@ -545,9 +542,9 @@ export default function Home() {
               </p>
             </div>
 
-            
+
             <div className="flex flex-col gap-8 sm:flex-row sm:gap-12 lg:gap-[60px]">
-              
+
               <div className="flex flex-col gap-4">
                 <h3 className="text-base font-extrabold uppercase leading-[1.5] text-white">
                   Quick Link
@@ -568,7 +565,7 @@ export default function Home() {
                 </div>
               </div>
 
-              
+
               <div className="flex flex-col gap-4">
                 <h3 className="text-base font-extrabold uppercase leading-[1.5] text-white">
                   Contact
@@ -586,7 +583,7 @@ export default function Home() {
                 </div>
               </div>
 
-              
+
               <div className="flex flex-col gap-4">
                 <h3 className="text-base font-extrabold uppercase leading-[1.5] text-white">
                   Social Link
@@ -633,10 +630,10 @@ export default function Home() {
             </div>
           </div>
 
-          
+
           <div className="my-8 h-px w-full bg-white opacity-30" />
 
-          
+
           <div className="flex justify-center lg:justify-end">
             <p className="text-xs font-normal tracking-[-0.24px] text-white">
               © 2025 Waygibb. All rights reserved.
@@ -662,21 +659,21 @@ function TestimonialCard({ quote, name, location, image, size, rating, className
   const isLarge = size === "large";
 
   return (
-    <div className={`h-[291px] overflow-hidden rounded-2xl border border-[#d2d2d2] bg-white ${className}`}>
+    <div className={`h-[291px] overflow-hidden rounded-2xl border border-[#d2d2d2] bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#422774] ${className}`}>
       <div className="flex h-full flex-col justify-between p-5 md:p-[30px]">
-        
+
         <p className={`text-base leading-[130%] text-[#3a3a3a] ${isLarge ? 'max-w-[612px]' : 'max-w-[234px]'}`}>
           {quote}
         </p>
 
-        
+
         <div className="space-y-4">
-          
+
           <div className="h-px w-full bg-[#d2d2d2]" />
 
-          
+
           <div className={`flex items-center ${isLarge ? 'justify-between' : 'gap-3'}`}>
-            
+
             <div className="flex items-center gap-3">
               <div className="relative h-[46px] w-[46px] flex-shrink-0 overflow-hidden rounded-full">
                 <Image
@@ -693,7 +690,7 @@ function TestimonialCard({ quote, name, location, image, size, rating, className
               </div>
             </div>
 
-            
+
             {rating && isLarge && (
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-4">
@@ -720,9 +717,13 @@ function TestimonialCard({ quote, name, location, image, size, rating, className
   );
 }
 
-function HowItWorksCard({ icon, text }: { icon: string; text: string }) {
+function HowItWorksCard({ icon, text, delay }: { icon: string; text: string; delay?: number }) {
   return (
-    <div className="flex items-center gap-4 bg-white px-6 py-5 sm:gap-6 sm:px-8 sm:py-6 md:px-[45px] md:py-[26px]">
+    <div
+      className="flex items-center gap-4 bg-white px-6 py-5 sm:gap-6 sm:px-8 sm:py-6 md:px-[45px] md:py-[26px]"
+      data-aos="fade-left"
+      data-aos-delay={delay}
+    >
       <div className="flex-shrink-0">
         <Image
           src={icon}
@@ -742,9 +743,8 @@ function HowItWorksCard({ icon, text }: { icon: string; text: string }) {
 function CategoryItem({ title, isActive = false }: { title: string; isActive?: boolean }) {
   return (
     <div
-      className={`flex items-center bg-white px-5 py-3 ${
-        isActive ? 'border-l-[6px] border-[#d1443e]' : ''
-      }`}
+      className={`flex items-center bg-white px-5 py-3 ${isActive ? 'border-l-[6px] border-[#d1443e]' : ''
+        }`}
     >
       <p className="text-2xl font-bold leading-[130%] text-[#3a3a3a]">{title}</p>
     </div>
@@ -759,12 +759,12 @@ function CategoryImageSlider() {
     "/assets/category-4.png",
     "/assets/category-5.png"
   ];
-  
+
   const duplicatedImages = [...images, ...images];
-  
+
   return (
     <div className="relative w-[310px] -mt-20">
-      
+
       <div className="relative h-[900px] overflow-hidden">
         <div className="flex flex-col gap-10 animate-infinite-scroll">
           {duplicatedImages.map((src, index) => (
@@ -792,12 +792,12 @@ function CategoryImageSliderReverse() {
     "/assets/category-col2-4.png",
     "/assets/category-col2-5.png"
   ];
-  
+
   const duplicatedImages = [...images, ...images];
-  
+
   return (
     <div className="relative w-[310px] -mt-20">
-      
+
       <div className="relative h-[900px] overflow-hidden">
         <div className="flex flex-col gap-10 animate-infinite-scroll-reverse">
           {duplicatedImages.map((src, index) => (
@@ -825,12 +825,12 @@ function CategoryImageSliderHorizontal() {
     "/assets/category-4.png",
     "/assets/category-5.png"
   ];
-  
+
   const duplicatedImages = [...images, ...images];
-  
+
   return (
     <div className="relative w-full overflow-hidden">
-      
+
       <div className="relative h-[259px]">
         <div className="flex gap-6 animate-infinite-scroll-horizontal">
           {duplicatedImages.map((src, index) => (
@@ -860,9 +860,9 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode; titl
           <p className="text-base font-normal leading-[130.48%] text-[#3a3a3a]">{description}</p>
         </div>
       </div>
-      
+
       <svg className="pointer-events-none absolute bottom-8 right-8 h-24 w-[310px]" viewBox="0 0 310 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 96 L300 96 Q308 96 308 88 L308 0" stroke="#AE3934" strokeWidth="2" fill="none" strokeLinecap="round"/>
+        <path d="M0 96 L300 96 Q308 96 308 88 L308 0" stroke="#AE3934" strokeWidth="2" fill="none" strokeLinecap="round" />
       </svg>
     </div>
   );

@@ -85,19 +85,16 @@ export default function AboutPage() {
                 onClick={() => setIsMenuOpen((prev) => !prev)}
               >
                 <span
-                  className={`h-[2px] w-6 bg-current transition-transform ${
-                    isMenuOpen ? "translate-y-[6px] rotate-45" : ""
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""
+                    }`}
                 />
                 <span
-                  className={`h-[2px] w-6 bg-current transition-opacity ${
-                    isMenuOpen ? "opacity-0" : "opacity-100"
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"
+                    }`}
                 />
                 <span
-                  className={`h-[2px] w-6 bg-current transition-transform ${
-                    isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
-                  }`}
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
+                    }`}
                 />
               </button>
             </div>
@@ -111,13 +108,12 @@ export default function AboutPage() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`whitespace-nowrap px-1 py-2 transition-colors ${
-                        isDownloadApp
-                          ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
-                          : isActive
+                      className={`whitespace-nowrap px-1 py-2 transition-colors ${isDownloadApp
+                        ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
+                        : isActive
                           ? "border-b-2 border-[#2c1a4d] text-[#372161]"
                           : "text-[#3a3a3a] hover:text-[#372161]"
-                      }`}
+                        }`}
                     >
                       {item}
                     </Link>
@@ -135,13 +131,12 @@ export default function AboutPage() {
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`relative z-50 transition-colors whitespace-nowrap ${
-                        isDownloadApp
-                          ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
-                          : isActive
+                      className={`relative z-50 transition-colors whitespace-nowrap ${isDownloadApp
+                        ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
+                        : isActive
                           ? "pb-1 border-b-2 border-[#2c1a4d] text-[#372161]"
                           : "pb-1 text-[#3a3a3a] hover:text-[#372161]"
-                      }`}
+                        }`}
                     >
                       {item}
                     </Link>
@@ -152,11 +147,10 @@ export default function AboutPage() {
           </header>
 
           <div
-            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${
-              isMenuOpen
-                ? "translate-x-0 opacity-100"
-                : "pointer-events-none translate-x-full opacity-0"
-            }`}
+            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen
+              ? "translate-x-0 opacity-100"
+              : "pointer-events-none translate-x-full opacity-0"
+              }`}
           >
             <div className="flex items-center justify-between py-2">
               <Image
@@ -184,13 +178,12 @@ export default function AboutPage() {
                   <Link
                     href={navHref(item)}
                     key={item}
-                    className={`rounded-full px-6 py-4 text-left transition-colors ${
-                      isDownloadApp
-                        ? "border-2 border-[#422774] text-center hover:bg-[#422774] hover:text-white"
-                        : isActive
+                    className={`rounded-full px-6 py-4 text-left transition-colors ${isDownloadApp
+                      ? "border-2 border-[#422774] text-center hover:bg-[#422774] hover:text-white"
+                      : isActive
                         ? "bg-[#372161] text-white"
                         : "text-[#3a3a3a] hover:text-[#372161]"
-                    }`}
+                      }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item}
@@ -201,17 +194,17 @@ export default function AboutPage() {
           </div>
 
           <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
-            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12">
+            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12" data-aos="fade-up">
               <div className="space-y-7 px-1 md:space-y-8 md:px-0">
                 <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
                   <span className="block">Building Trust Through Innovation</span>
-                
+
                 </h1>
                 <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/85 sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
                   <p className="m-0">
-                  At WayGibb, we’re redefining online shopping with <br />
+                    At WayGibb, we’re redefining online shopping with <br />
                     transparency, reliability, and customer-first experiences that <br />
-                        make every purchase simple and secure.
+                    make every purchase simple and secure.
                   </p>
                 </div>
               </div>
@@ -239,7 +232,7 @@ export default function AboutPage() {
           </main>
         </div>
 
-        <div className="relative hidden lg:flex lg:-mr-12 lg:-mt-8 lg:items-start lg:justify-end xl:-mr-15 xl:-mt-12">
+        <div className="relative hidden lg:flex lg:-mr-12 lg:-mt-8 lg:items-start lg:justify-end xl:-mr-15 xl:-mt-12" data-aos="fade-left">
           <Image
             src="/assets/about.png"
             alt="WayGibb team and deliveries"
@@ -254,7 +247,7 @@ export default function AboutPage() {
       <section className="bg-[#f5f3ff] px-6 py-16 sm:px-10 md:px-12 md:py-20 lg:px-12 xl:px-16">
         <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <div className="space-y-6">
-            <div className="relative overflow-hidden rounded-[32px] bg-white px-6 py-10 shadow-[0px_20px_45px_rgba(15,8,38,0.08)] sm:px-10 sm:py-14">
+            <div className="relative overflow-hidden rounded-[32px] bg-white px-6 py-10 shadow-[0px_20px_45px_rgba(15,8,38,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-10 sm:py-14" data-aos="fade-right">
               <Image
                 src="/assets/Line 139.png"
                 alt="Decorative dashed line"
@@ -286,7 +279,7 @@ export default function AboutPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               <Link
                 href="#"
-                className="flex items-center gap-4 rounded-[28px] bg-white px-6 py-5 text-[#372161] shadow-[0px_12px_30px_rgba(0,0,0,0.12)] transition hover:-translate-y-0.5"
+                className="flex items-center gap-4 rounded-[28px] bg-white px-6 py-5 text-[#372161] shadow-[0px_12px_30px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <Image
                   src="/assets/logos_apple-app-store.svg"
@@ -302,7 +295,7 @@ export default function AboutPage() {
               </Link>
               <Link
                 href="#"
-                className="flex items-center gap-4 rounded-[28px] bg-white px-6 py-5 text-[#372161] shadow-[0px_12px_30px_rgba(0,0,0,0.12)] transition hover:-translate-y-0.5"
+                className="flex items-center gap-4 rounded-[28px] bg-white px-6 py-5 text-[#372161] shadow-[0px_12px_30px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <Image
                   src="/assets/logos_google-play-icon.svg"
@@ -319,14 +312,14 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6" data-aos="fade-left">
             <div className="grid grid-cols-2 gap-4">
               <MetricCard value="200+" label="Verified Vendors" />
               <MetricCard value="100+" label="Secure Transactions" />
               <MetricCard value="100k" label="Successful Orders" />
               <MetricCard value="Nationwide" label="Delivery Coverage" />
             </div>
-            <div className="overflow-hidden rounded-[32px] bg-white shadow-[0px_15px_35px_rgba(0,0,0,0.15)]">
+            <div className="overflow-hidden rounded-[32px] bg-white shadow-[0px_15px_35px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <Image
                 src="/assets/Frame 1000012050.png"
                 alt="WayGibb operations team collaborating"
@@ -341,7 +334,7 @@ export default function AboutPage() {
 
       <section className="bg-[rgba(217,212,227,0.45)] px-6 py-16 sm:px-10 md:px-12 md:py-20 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-[1400px]">
-          <div className="relative grid gap-6 md:grid-cols-2">
+          <div className="relative grid gap-6 md:grid-cols-2" data-aos="fade-up">
             <Image
               src="/assets/Line 139.png"
               alt=""
@@ -349,7 +342,7 @@ export default function AboutPage() {
               height={1011}
               className="pointer-events-none absolute inset-0 hidden h-full w-auto opacity-40 md:block"
             />
-            <div className="relative rounded-[28px] bg-white px-6 py-10 shadow-[0px_12px_30px_rgba(0,0,0,0.12)] sm:px-8">
+            <div className="relative rounded-[28px] bg-white px-6 py-10 shadow-[0px_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-8">
               <div className="inline-flex items-center justify-center rounded-[24px] border border-solid border-[#3a3a3a] px-4 py-2">
                 <p className="text-center text-base font-semibold text-[#3a3a3a] whitespace-nowrap">
                   Our Vision
@@ -364,7 +357,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="relative rounded-[28px] bg-white px-6 py-10 shadow-[0px_12px_30px_rgba(0,0,0,0.12)] sm:px-8">
+            <div className="relative rounded-[28px] bg-white px-6 py-10 shadow-[0px_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-8">
               <div className="inline-flex items-center justify-center rounded-[24px] border border-solid border-[#3a3a3a] px-4 py-2">
                 <p className="text-center text-base font-semibold text-[#3a3a3a] whitespace-nowrap">
                   Our Mission
@@ -385,7 +378,7 @@ export default function AboutPage() {
 
       <section className="bg-white px-6 py-16 sm:px-10 md:px-12 md:py-20 lg:px-12 xl:px-16">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
-          <div className="space-y-6 lg:w-[45%]">
+          <div className="space-y-6 lg:w-[45%]" data-aos="fade-right">
             <div className="inline-flex items-center justify-center rounded-[24px] border border-solid border-[#3a3a3a] px-4 py-2">
               <p className="text-center text-base font-semibold text-[#3a3a3a] whitespace-nowrap">
                 Our Core Values
@@ -400,7 +393,7 @@ export default function AboutPage() {
                 delivery.
               </p>
             </div>
-            <div className="overflow-hidden rounded-3xl shadow-[0px_18px_35px_rgba(0,0,0,0.18)]">
+            <div className="overflow-hidden rounded-3xl shadow-[0px_18px_35px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <Image
                 src="/assets/core-.png"
                 alt="WayGibb team collaborating"
@@ -411,7 +404,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-19">
+          <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-19" data-aos="fade-left">
             <CoreValueCard
               title="Integrity"
               description="We sell only authentic and trusted products. Every transaction is guided by honesty and transparency, so customers always get exactly what they pay for."
@@ -594,7 +587,7 @@ function DownloadCTA({ className = "", onClick }: DownloadCTAProps) {
 
 function MetricCard({ value, label }: MetricCardProps) {
   return (
-    <div className="rounded-[24px] bg-white px-6 py-5 text-left shadow-[0px_10px_24px_rgba(0,0,0,0.12)]">
+    <div className="rounded-[24px] bg-white px-6 py-5 text-left shadow-[0px_10px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       <p className="text-2xl font-extrabold text-[#d1443e]">{value}</p>
       <p className="mt-2 text-sm font-semibold text-[#3a3a3a] sm:text-base">{label}</p>
     </div>
@@ -608,7 +601,7 @@ type CoreValueCardProps = {
 
 function CoreValueCard({ title, description }: CoreValueCardProps) {
   return (
-    <div className="min-h-[250px] min-w-[260px] rounded-[24px] bg-white px-9 py-9 shadow-[0px_6px_22px_rgba(0,0,0,0.14)]">
+    <div className="min-h-[250px] min-w-[260px] rounded-[24px] bg-white px-9 py-9 shadow-[0px_6px_22px_rgba(0,0,0,0.14)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       <h3 className="text-lg font-bold text-[#372161]">{title}</h3>
       <p className="mt-3 text-sm leading-[1.6] text-[#3a3a3a] sm:text-base">{description}</p>
     </div>

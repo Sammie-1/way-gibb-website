@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
+import AOSInit from "./components/AOSInit";
+import "aos/dist/aos.css";
 import "./globals.css";
 
 const mulish = Mulish({
@@ -22,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${mulish.variable} antialiased bg-[#f9f7ff]`}>
+        <AOSInit />
         {children}
       </body>
     </html>
