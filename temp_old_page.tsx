@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -35,37 +35,8 @@ type DownloadCTAProps = {
   onClick?: () => void;
 };
 
-const heroSlides = [
-  {
-    title1: "Get Everything You Need - From",
-    title2: "Gadgets to Building Materials",
-    description: "WayGibb makes shopping easier. Whether you're buying the latest electronics or sourcing building materials like sand, cement, and granite, we deliver straight to your doorstep — fast, affordable, and reliable.",
-    image: "/assets/hero_bg_lifestyle_1772873824940.png"
-  },
-  {
-    title1: "Premium Quality Electronics",
-    title2: "Delivered Fast to You",
-    description: "Discover the latest smartphones, sleek laptops, and premium accessories all in one place. Guaranteed authentic products with the convenience of fast delivery to your door.",
-    image: "/assets/hero_bg_electronics_1772873840381.png"
-  },
-  {
-    title1: "Top-Grade Construction Materials",
-    title2: "For Your Dream Project",
-    description: "Source high-quality cement, sand, granite, and tools seamlessly. We partner with trusted vendors to ensure you get the best supplies right on time for your building needs.",
-    image: "/assets/hero_bg_construction_1772873857478.png"
-  }
-];
-
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -88,164 +59,152 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#f9f7ff] text-[#3a3a3a]">
-      {/* Outer padding removed to allow full screen edge-to-edge */}
-      <div className="relative flex min-h-screen w-full flex-col h-[100dvh]">
+      <div className="relative flex min-h-screen w-full flex-col gap-8 px-6 pb-20 pt-6 sm:gap-10 sm:px-10 md:px-12 md:pb-24 md:pt-8 lg:grid lg:grid-cols-2 lg:gap-12 lg:px-12 xl:gap-16 xl:px-16">
 
-        <main className="relative flex w-full flex-1 flex-col overflow-hidden">
-          {/* Background Carousel */}
-          {heroSlides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? "opacity-100 z-0" : "opacity-0 -z-10"
-                }`}
-            >
+        <div className="flex flex-col gap-8 sm:gap-10">
+          <header className="relative flex flex-col gap-5 md:gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+            <div className="flex items-center gap-4 py-2 md:py-0 lg:py-0">
               <Image
-                src={slide.image}
-                alt={`Hero background ${index + 1}`}
-                fill
-                className="object-cover"
-                priority={index === 0}
+                src="/assets/waygibb/logo.png"
+                alt="WayGibb logo"
+                width={270}
+                height={120}
+                priority
+                className="h-[110px] w-auto sm:h-[130px] lg:h-[100px]"
               />
-              <div className="absolute inset-0 bg-[#f9f7ff]/70" />
-            </div>
-          ))}
-
-          {/* Foreground Wrapper */}
-          <div className="relative z-10 flex flex-col flex-1 w-full h-full">
-            <header className="relative w-full flex flex-col gap-5 md:gap-6 lg:flex-row lg:items-center lg:justify-between px-6 pt-6 sm:px-10 sm:pt-8 md:px-12 md:pt-10 lg:px-12 xl:px-16 z-50">
-
-              {/* Logo - Left Aligned */}
-              <div className="flex items-center gap-4 py-2 md:py-0 lg:py-0 lg:flex-1">
-                <div className="flex items-center">
-                  <Image
-                    src="/assets/waygibb/logo.png"
-                    alt="WayGibb logo"
-                    width={270}
-                    height={120}
-                    priority
-                    className="h-[60px] w-auto sm:h-[70px] lg:h-[80px]"
-                  />
-                </div>
-                <button
-                  type="button"
-                  aria-label="Toggle navigation"
-                  className="ml-auto flex h-12 w-12 flex-col items-center justify-center gap-1 rounded-full border border-[#372161] text-[#372161] lg:hidden"
-                  onClick={() => setIsMenuOpen((prev) => !prev)}
-                >
-                  <span
-                    className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""
-                      }`}
-                  />
-                  <span
-                    className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"
-                      }`}
-                  />
-                  <span
-                    className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
-                      }`}
-                  />
-                </button>
-              </div>
-
-              {/* Navbar - Centered absolutely on large screens */}
-              <nav className="hidden items-center justify-center gap-6 rounded-[176px] bg-white/60 px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.05)] backdrop-blur lg:flex lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:mt-6">
-                <div className="flex flex-nowrap items-center justify-center gap-8 whitespace-nowrap">
-                  {NAV_ITEMS.map((item) => {
-                    const isActive = item === "Home";
-                    return (
-                      <Link
-                        href={navHref(item)}
-                        key={item}
-                        className={`relative z-50 pb-1 transition-all whitespace-nowrap ${isActive
-                          ? "border-b-2 border-[#2c1a4d] text-[#372161]"
-                          : "text-[#3a3a3a] hover:text-[#372161]"
-                          }`}
-                      >
-                        {item}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </nav>
-
-              {/* Download CTA - Right Aligned on large screens */}
-              <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                <DownloadCTA />
-              </div>
-            </header>
-
-            <div
-              className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen
-                ? 'translate-x-0 opacity-100'
-                : 'pointer-events-none translate-x-full opacity-0'
-                }`}
-            >
-              <div className="flex items-center justify-between py-2">
-                <Image
-                  src="/assets/waygibb/logo.png"
-                  alt="WayGibb logo compact"
-                  width={180}
-                  height={90}
-                  className="h-[72px] w-auto"
-                  priority
+              <button
+                type="button"
+                aria-label="Toggle navigation"
+                className="ml-auto flex h-12 w-12 flex-col items-center justify-center gap-1 rounded-full border border-[#372161] text-[#372161] sm:hidden"
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+              >
+                <span
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""
+                    }`}
                 />
-                <button
-                  type="button"
-                  aria-label="Close navigation"
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#372161] text-xl text-[#372161]"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  ✕
-                </button>
-              </div>
-              <div className="flex flex-col gap-3 px-2 text-lg font-semibold">
+                <span
+                  className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"
+                    }`}
+                />
+                <span
+                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
+                    }`}
+                />
+              </button>
+            </div>
+
+            <nav className="hidden items-center justify-center gap-4 rounded-[999px] bg-white/90 px-6 py-4 text-sm font-semibold text-[#3a3a3a] shadow-[0_12px_30px_rgba(55,33,97,0.08)] backdrop-blur md:flex lg:hidden">
+              <div className="flex w-full items-center justify-center gap-8 overflow-x-auto px-2">
                 {NAV_ITEMS.map((item) => {
                   const isActive = item === "Home";
                   return (
                     <Link
                       href={navHref(item)}
                       key={item}
-                      className={`rounded-full px-6 py-4 text-left transition-colors ${isActive
-                        ? "bg-[#372161] text-white"
+                      className={`whitespace-nowrap px-1 py-2 transition-colors ${isActive
+                        ? "border-b-2 border-[#2c1a4d] text-[#372161]"
                         : "text-[#3a3a3a] hover:text-[#372161]"
                         }`}
-                      onClick={() => setIsMenuOpen(false)}
                     >
                       {item}
                     </Link>
                   );
                 })}
               </div>
-              <DownloadCTA className="w-full justify-center" onClick={() => setIsMenuOpen(false)} />
-            </div>
+            </nav>
 
-            <section className="flex flex-1 flex-col items-center justify-center w-full max-w-[800px] mx-auto text-center px-4" data-aos="fade-up">
-              <div
-                key={currentSlide}
-                className="space-y-7 px-1 md:space-y-8 md:px-0 animate-fade-in-up"
+            <nav className="relative z-50 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
+              <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
+                {NAV_ITEMS.map((item) => {
+                  const isActive = item === "Home";
+                  return (
+                    <Link
+                      href={navHref(item)}
+                      key={item}
+                      className={`relative z-50 pb-1 transition-colors whitespace-nowrap ${isActive
+                        ? "border-b-2 border-[#2c1a4d] text-[#372161]"
+                        : "text-[#3a3a3a] hover:text-[#372161]"
+                        }`}
+                    >
+                      {item}
+                    </Link>
+                  );
+                })}
+              </div>
+              <DownloadCTA />
+            </nav>
+          </header>
+
+          <div
+            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen
+              ? 'translate-x-0 opacity-100'
+              : 'pointer-events-none translate-x-full opacity-0'
+              }`}
+          >
+            <div className="flex items-center justify-between py-2">
+              <Image
+                src="/assets/waygibb/logo.png"
+                alt="WayGibb logo compact"
+                width={180}
+                height={90}
+                className="h-[72px] w-auto"
+                priority
+              />
+              <button
+                type="button"
+                aria-label="Close navigation"
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#372161] text-xl text-[#372161]"
+                onClick={() => setIsMenuOpen(false)}
               >
-                <h1 className="text-[28px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
+                ✕
+              </button>
+            </div>
+            <div className="flex flex-col gap-3 px-2 text-lg font-semibold">
+              {NAV_ITEMS.map((item) => {
+                const isActive = item === "Home";
+                return (
+                  <Link
+                    href={navHref(item)}
+                    key={item}
+                    className={`rounded-full px-6 py-4 text-left transition-colors ${isActive
+                      ? "bg-[#372161] text-white"
+                      : "text-[#3a3a3a] hover:text-[#372161]"
+                      }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
+            </div>
+            <DownloadCTA className="w-full justify-center" onClick={() => setIsMenuOpen(false)} />
+          </div>
+
+          <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
+            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12" data-aos="fade-up">
+              <div className="space-y-7 px-1 md:space-y-8 md:px-0">
+                <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
                   <span className="block">
-                    {heroSlides[currentSlide].title1}
+                    Get Everything You Need - From
                   </span>
                   <span className="block">
-                    {heroSlides[currentSlide].title2}
+                    Gadgets to Building Materials
                   </span>
                 </h1>
                 <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/85 sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
-                  <p className="m-0 max-w-[650px] mx-auto">
-                    {heroSlides[currentSlide].description}
+                  <p className="m-0">
+                    WayGibb makes shopping easier. Whether you&apos;re buying the <br />latest electronics or sourcing building materials like sand, <br /> cement, and granite, we deliver straight to your doorstep — <br /> fast, affordable, and reliable.
                   </p>
                 </div>
               </div>
-              <div className="my-2 h-px w-full max-w-[600px] bg-[#d9d0f1] md:my-3" />
-              <div className="space-y-8 px-1 md:space-y-10 md:px-0 flex flex-col items-center">
+              <div className="my-2 h-px w-full bg-[#d9d0f1] md:my-3" />
+              <div className="space-y-8 px-1 md:space-y-10 md:px-0">
                 <p className="text-lg font-semibold italic leading-[1.4] text-[#3a3a3a] sm:text-xl md:text-2xl">
                   Download the WayGibb App to Order Now!
                 </p>
                 <div
                   id="download"
-                  className="flex flex-row flex-wrap justify-center gap-4 md:gap-5"
+                  className="flex flex-row flex-wrap gap-4 md:gap-5"
                 >
                   <StoreButton
                     href="#download"
@@ -262,21 +221,20 @@ export default function Home() {
                 </div>
               </div>
             </section>
+          </main>
+        </div>
 
-            {/* Pagination Dots */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center gap-3 z-10">
-              {heroSlides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`h-3 w-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-[#372161] w-8" : "bg-[#372161]/30 hover:bg-[#372161]/60"
-                    }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </main>
+
+        <div className="relative hidden lg:flex lg:items-start lg:justify-end lg:-mr-12 lg:-mt-8 xl:-mr-15 xl:-mt-12" data-aos="fade-left">
+          <Image
+            src="/assets/Home.png"
+            alt="WayGibb product showcase"
+            width={600}
+            height={600}
+            className="w-[90%] h-auto object-contain"
+            priority
+          />
+        </div>
       </div>
 
 
@@ -683,7 +641,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </div >
+    </div>
   );
 }
 
