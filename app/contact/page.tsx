@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const NAV_ITEMS = ["Home", "About", "Services", "Products", "Contact", "Download App"];
+import { SiteFooter } from "../components/SiteFooter";
+import { SiteHeader } from "../components/SiteHeader";
 
 type FaqItem = {
   question: string;
@@ -44,25 +45,6 @@ const FAQ_ITEMS: FaqItem[] = [
   },
 ];
 
-const navHref = (item: string) => {
-  switch (item) {
-    case "Home":
-      return "/";
-    case "About":
-      return "/about";
-    case "Services":
-      return "/services";
-    case "Products":
-      return "/products";
-    case "Download App":
-      return "/download-app";
-    case "Contact":
-      return "/contact";
-    default:
-      return "/";
-  }
-};
-
 type StoreButtonProps = {
   label: string;
   href: string;
@@ -70,36 +52,11 @@ type StoreButtonProps = {
   className?: string;
 };
 
-type DownloadCTAProps = {
-  className?: string;
-  onClick?: () => void;
-};
-
 export default function ContactPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (!isMenuOpen) {
-      document.body.style.removeProperty("overflow");
-      document.body.style.removeProperty("opacity");
-      return;
-    }
-
-    const originalOverflow = document.body.style.overflow;
-    const originalOpacity = document.body.style.opacity;
-
-    document.body.style.overflow = "hidden";
-    document.body.style.opacity = "1";
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      document.body.style.opacity = originalOpacity;
-    };
-  }, [isMenuOpen]);
-
   return (
-        <div className="min-h-screen bg-[#f9f7ff] text-[#3a3a3a]">
+    <div className="min-h-screen bg-[#f9f7ff] text-[#3a3a3a]">
       <div className="relative flex min-h-[70vh] w-full flex-col">
         <main className="relative flex w-full flex-1 flex-col overflow-hidden">
           {/* Background Image */}
@@ -116,72 +73,7 @@ export default function ContactPage() {
 
           {/* Foreground Wrapper */}
           <div className="relative z-10 flex flex-col flex-1 w-full h-full">
-            <header className="relative w-full flex flex-col gap-5 md:gap-6 lg:flex-row lg:items-center lg:justify-between px-6 pt-6 sm:px-10 sm:pt-8 md:px-12 md:pt-10 lg:px-12 xl:px-16 z-50">
-              {/* Logo - Left Aligned */}
-              <div className="flex items-center gap-4 py-2 md:py-0 lg:py-0 lg:flex-1">
-                <div className="flex items-center">
-                  <Image
-                    src="/assets/waygibb/logo.png"
-                    alt="WayGibb logo"
-                    width={270}
-                    height={120}
-                    priority
-                    className="h-[60px] w-auto sm:h-[70px] lg:h-[80px]"
-                  />
-                </div>
-                <button
-                  type="button"
-                  aria-label="Toggle navigation"
-                  className="ml-auto flex h-12 w-12 flex-col items-center justify-center gap-1 rounded-full border border-[#372161] text-[#372161] lg:hidden"
-                  onClick={() => setIsMenuOpen((prev) => !prev)}
-                >
-                  <span className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
-                  <span className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"}`} />
-                  <span className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
-                </button>
-              </div>
-
-              {/* Navbar - Centered absolutely on large screens */}
-              <nav className="hidden items-center justify-center gap-6 rounded-[176px] bg-white/60 px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.05)] backdrop-blur lg:flex lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:mt-6">
-                <div className="flex flex-nowrap items-center justify-center gap-8 whitespace-nowrap">
-                  {["Home", "About", "Services", "Products", "Contact"].map((item) => {
-                    const isActive = item === "Contact";
-                    return (
-                      <Link
-                        href={navHref(item)}
-                        key={item}
-                        className={`relative z-50 pb-1 transition-all whitespace-nowrap ${isActive ? "border-b-2 border-[#2c1a4d] text-[#372161]" : "text-[#3a3a3a] hover:text-[#372161]"}`}
-                      >
-                        {item}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </nav>
-
-              {/* Download CTA - Right Aligned on large screens */}
-              <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                <DownloadCTA />
-              </div>
-            </header>
-
-            <div className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen ? 'translate-x-0 opacity-100' : 'pointer-events-none translate-x-full opacity-0'}`}>
-              <div className="flex items-center justify-between py-2">
-                <Image src="/assets/waygibb/logo.png" alt="WayGibb logo compact" width={180} height={90} className="h-[72px] w-auto" priority />
-                <button type="button" aria-label="Close navigation" className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#372161] text-xl text-[#372161]" onClick={() => setIsMenuOpen(false)}>✕</button>
-              </div>
-              <div className="flex flex-col gap-3 px-2 text-lg font-semibold">
-                {["Home", "About", "Services", "Products", "Contact"].map((item) => {
-                  const isActive = item === "Contact";
-                  return (
-                    <Link href={navHref(item)} key={item} className={`rounded-full px-6 py-4 text-left transition-colors ${isActive ? "bg-[#372161] text-white" : "text-[#3a3a3a] hover:text-[#372161]"}`} onClick={() => setIsMenuOpen(false)}>
-                      {item}
-                    </Link>
-                  );
-                })}
-              </div>
-              <DownloadCTA className="w-full justify-center" onClick={() => setIsMenuOpen(false)} />
-            </div>
+            <SiteHeader active="Contact" />
 
             <section className="flex flex-1 flex-col items-center justify-center w-full max-w-[800px] mx-auto text-center px-4 py-16 lg:py-24" data-aos="fade-up">
               <div className="space-y-7 px-1 md:space-y-8 md:px-0 animate-fade-in-up">
@@ -457,136 +349,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <footer className="bg-[#0f002f] px-6 py-12 sm:px-10 md:px-12 md:py-14 lg:px-12 xl:px-16">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
-            <div className="flex max-w-[299px] flex-col gap-5">
-              <div className="h-20 w-[206px]">
-                <Image
-                  src="/assets/footer/logo.png"
-                  alt="WayGibb"
-                  width={206}
-                  height={80}
-                  className="h-full w-auto object-contain"
-                />
-              </div>
-              <p className="text-sm font-medium leading-[1.5] tracking-[-0.28px] text-[#f8f8f8]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius elementum tristique..
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-8 sm:flex-row sm:gap-12 lg:gap-[60px]">
-              <div className="flex flex-col gap-4">
-                <h3 className="text-base font-extrabold uppercase leading-[1.5] text-white">
-                  Quick Link
-                </h3>
-                <div className="flex flex-col gap-2.5">
-                  <Link
-                    href="#"
-                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
-                  >
-                    About
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
-                  >
-                    Service
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
-                  >
-                    Contact
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                <h3 className="text-base font-extrabold uppercase leading-[1.5] text-white">
-                  Contact
-                </h3>
-                <div className="flex flex-col gap-4">
-                  <a
-                    href="mailto:support@waygibb.com"
-                    className="text-sm font-medium leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
-                  >
-                    support@waygibb.com
-                  </a>
-                  <a
-                    href="tel:+2349012345678"
-                    className="text-sm font-normal leading-[1.5] text-[#fefefe] transition-colors hover:text-white"
-                  >
-                    +234 901 234 5678
-                  </a>
-                  <p className="max-w-[235px] text-sm font-normal leading-[1.5] text-[#fefefe]">
-                    No. 15, WayGibb Plaza, Ring Road, Ibadan, Oyo State, Nigeria
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                <h3 className="text-base font-extrabold uppercase leading-[1.5] text-white">
-                  Social Link
-                </h3>
-                <div className="flex items-center gap-4">
-                  <Link href="#" className="transition-opacity hover:opacity-80" aria-label="LinkedIn">
-                    <Image
-                      src="/assets/footer/linkedin-icon.svg"
-                      alt=""
-                      width={28}
-                      height={28}
-                      className="h-7 w-7"
-                    />
-                  </Link>
-                  <Link href="#" className="transition-opacity hover:opacity-80" aria-label="Facebook">
-                    <Image
-                      src="/assets/footer/facebook-icon.svg"
-                      alt=""
-                      width={28}
-                      height={28}
-                      className="h-7 w-7"
-                    />
-                  </Link>
-                  <Link href="#" className="transition-opacity hover:opacity-80" aria-label="Instagram">
-                    <Image
-                      src="/assets/footer/instagram-icon.svg"
-                      alt=""
-                      width={28}
-                      height={28}
-                      className="h-7 w-7"
-                    />
-                  </Link>
-                  <Link href="#" className="transition-opacity hover:opacity-80" aria-label="X (Twitter)">
-                    <Image
-                      src="/assets/footer/x-icon.svg"
-                      alt=""
-                      width={28}
-                      height={28}
-                      className="h-7 w-7"
-                    />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="my-8 h-px w-full bg-white opacity-30" />
-
-          <div className="flex justify-center lg:justify-end">
-            <p className="text-xs font-normal tracking-[-0.24px] text-white">
-              © 2025 Waygibb. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
@@ -604,17 +367,3 @@ function StoreButton({ label, href, iconSrc, className = "" }: StoreButtonProps)
     </Link>
   );
 }
-
-function DownloadCTA({ className = "", onClick }: DownloadCTAProps) {
-  return (
-    <Link
-      href="/download-app"
-      onClick={onClick}
-      className={`whitespace-nowrap rounded-full border border-[#422774] px-6 py-3 text-[15px] font-semibold text-[#372161] transition hover:bg-[#372161] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#372161] md:px-5 md:py-2 md:text-[16px] ${className}`}
-    >
-      Download App
-    </Link>
-  );
-}
-
-
