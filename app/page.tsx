@@ -106,7 +106,7 @@ export default function Home() {
                 className="object-cover"
                 priority={index === 0}
               />
-              <div className="absolute inset-0 bg-[#f9f7ff]/70" />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,247,255,0.9)_0%,rgba(249,247,255,0.5)_50%,rgba(249,247,255,0.1)_100%)]" />
             </div>
           ))}
 
@@ -224,7 +224,7 @@ export default function Home() {
                 key={currentSlide}
                 className="space-y-7 px-1 md:space-y-8 md:px-0 animate-fade-in-up"
               >
-                <h1 className="text-[28px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
+                <h1 className="text-[28px] font-[700] leading-[1.2] text-[#3a3a3a] drop-shadow-[0_0_12px_rgba(255,255,255,0.9)] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
                   <span className="block">
                     {heroSlides[currentSlide].title1}
                   </span>
@@ -232,7 +232,7 @@ export default function Home() {
                     {heroSlides[currentSlide].title2}
                   </span>
                 </h1>
-                <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/85 sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
+                <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
                   <p className="m-0 max-w-[650px] mx-auto">
                     {heroSlides[currentSlide].description}
                   </p>
@@ -240,7 +240,7 @@ export default function Home() {
               </div>
               <div className="my-2 h-px w-full max-w-[600px] bg-[#d9d0f1] md:my-3" />
               <div className="space-y-8 px-1 md:space-y-10 md:px-0 flex flex-col items-center">
-                <p className="text-lg font-semibold italic leading-[1.4] text-[#3a3a3a] sm:text-xl md:text-2xl">
+                <p className="text-lg font-semibold italic leading-[1.4] text-[#3a3a3a] drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] sm:text-xl md:text-2xl">
                   Download the WayGibb App to Order Now!
                 </p>
                 <div

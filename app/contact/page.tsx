@@ -99,232 +99,115 @@ export default function ContactPage() {
   }, [isMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-white text-[#3a3a3a]">
-      <div className="relative flex min-h-screen w-full flex-col gap-8 px-6 pb-0 pt-6 sm:gap-10 sm:px-10 md:px-12 md:pb-0 md:pt-8 lg:grid lg:grid-cols-2 lg:gap-12 lg:px-12 xl:gap-16 xl:px-16">
-        <div className="flex flex-col gap-8 sm:gap-10">
-          <header className="relative flex flex-col gap-5 md:gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-            <div className="flex items-center gap-4 py-2">
-              <Image
-                src="/assets/waygibb/logo.png"
-                alt="WayGibb logo"
-                width={270}
-                height={120}
-                priority
-                className="h-[110px] w-auto sm:h-[130px] lg:h-[100px]"
-              />
-              <button
-                type="button"
-                aria-label="Toggle navigation"
-                className="ml-auto flex h-12 w-12 flex-col items-center justify-center gap-1 rounded-full border border-[#372161] text-[#372161] sm:hidden"
-                onClick={() => setIsMenuOpen((prev) => !prev)}
-              >
-                <span
-                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""
-                    }`}
-                />
-                <span
-                  className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"
-                    }`}
-                />
-                <span
-                  className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
-                    }`}
-                />
-              </button>
-            </div>
-
-            <nav className="hidden items-center justify-center gap-4 rounded-[999px] bg-white/90 px-6 py-4 text-sm font-semibold text-[#3a3a3a] shadow-[0_12px_30px_rgba(55,33,97,0.08)] backdrop-blur md:flex lg:hidden">
-              <div className="flex w-full items-center justify-center gap-8 overflow-x-auto px-2">
-                {NAV_ITEMS.map((item) => {
-                  const isActive = item === "Contact";
-                  const isDownloadApp = item === "Download App";
-                  return (
-                    <Link
-                      href={navHref(item)}
-                      key={item}
-                      className={`whitespace-nowrap px-1 py-2 transition-colors ${isDownloadApp
-                          ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
-                          : isActive
-                            ? "border-b-2 border-[#2c1a4d] text-[#372161]"
-                            : "text-[#3a3a3a] hover:text-[#372161]"
-                        }`}
-                    >
-                      {item}
-                    </Link>
-                  );
-                })}
-              </div>
-            </nav>
-
-            <nav className="relative z-50 hidden items-center justify-center gap-6 rounded-[176px] bg-white px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.11)] backdrop-blur lg:mr-16 lg:flex xl:mr-[-250px]">
-              <div className="flex flex-nowrap items-center justify-center gap-6 whitespace-nowrap">
-                {NAV_ITEMS.map((item) => {
-                  const isActive = item === "Contact";
-                  const isDownloadApp = item === "Download App";
-                  return (
-                    <Link
-                      href={navHref(item)}
-                      key={item}
-                      className={`relative z-50 transition-colors whitespace-nowrap ${isDownloadApp
-                          ? "rounded-full border-2 border-[#422774] px-4 py-2 hover:bg-[#422774] hover:text-white"
-                          : isActive
-                            ? "pb-1 border-b-2 border-[#2c1a4d] text-[#372161]"
-                            : "pb-1 text-[#3a3a3a] hover:text-[#372161]"
-                        }`}
-                    >
-                      {item}
-                    </Link>
-                  );
-                })}
-              </div>
-            </nav>
-          </header>
-
-          <div
-            className={`fixed inset-0 z-50 flex flex-col gap-8 bg-white px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen
-                ? "translate-x-0 opacity-100"
-                : "pointer-events-none translate-x-full opacity-0"
-              }`}
-          >
-            <div className="flex items-center justify-between py-2">
-              <Image
-                src="/assets/waygibb/logo.png"
-                alt="WayGibb logo compact"
-                width={180}
-                height={90}
-                className="h-[72px] w-auto"
-                priority
-              />
-              <button
-                type="button"
-                aria-label="Close navigation"
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#372161] text-xl text-[#372161]"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                ✕
-              </button>
-            </div>
-            <div className="flex flex-col gap-3 px-2 text-lg font-semibold">
-              {NAV_ITEMS.map((item) => {
-                const isActive = item === "Contact";
-                const isDownloadApp = item === "Download App";
-                return (
-                  <Link
-                    href={navHref(item)}
-                    key={item}
-                    className={`rounded-full px-6 py-4 text-left transition-colors ${isDownloadApp
-                        ? "border-2 border-[#422774] text-center hover:bg-[#422774] hover:text-white"
-                        : isActive
-                          ? "bg-[#372161] text-white"
-                          : "text-[#3a3a3a] hover:text-[#372161]"
-                      }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item}
-                  </Link>
-                );
-              })}
-            </div>
+        <div className="min-h-screen bg-[#f9f7ff] text-[#3a3a3a]">
+      <div className="relative flex min-h-[70vh] w-full flex-col">
+        <main className="relative flex w-full flex-1 flex-col overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/assets/hero_contact.png"
+              alt="Contact WayGibb"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,247,255,0.9)_0%,rgba(249,247,255,0.5)_50%,rgba(249,247,255,0.1)_100%)]" />
           </div>
 
-          <main className="flex flex-col gap-12 pt-8 md:pt-12 lg:items-start lg:pt-15">
-            {/* Hero copied from About page, with text tailored for Contact */}
-            <section className="flex w-full max-w-[720px] flex-1 flex-col gap-10 md:gap-12" data-aos="fade-up">
-              <div className="space-y-7 px-1 md:space-y-8 md:px-0">
-                <h1 className="text-[24px] font-[700] leading-[1.2] text-[#3a3a3a] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
-                  <span className="block">We&apos;d Love to Hear From You</span>
+          {/* Foreground Wrapper */}
+          <div className="relative z-10 flex flex-col flex-1 w-full h-full">
+            <header className="relative w-full flex flex-col gap-5 md:gap-6 lg:flex-row lg:items-center lg:justify-between px-6 pt-6 sm:px-10 sm:pt-8 md:px-12 md:pt-10 lg:px-12 xl:px-16 z-50">
+              {/* Logo - Left Aligned */}
+              <div className="flex items-center gap-4 py-2 md:py-0 lg:py-0 lg:flex-1">
+                <div className="flex items-center">
+                  <Image
+                    src="/assets/waygibb/logo.png"
+                    alt="WayGibb logo"
+                    width={270}
+                    height={120}
+                    priority
+                    className="h-[60px] w-auto sm:h-[70px] lg:h-[80px]"
+                  />
+                </div>
+                <button
+                  type="button"
+                  aria-label="Toggle navigation"
+                  className="ml-auto flex h-12 w-12 flex-col items-center justify-center gap-1 rounded-full border border-[#372161] text-[#372161] lg:hidden"
+                  onClick={() => setIsMenuOpen((prev) => !prev)}
+                >
+                  <span className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
+                  <span className={`h-[2px] w-6 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"}`} />
+                  <span className={`h-[2px] w-6 bg-current transition-transform ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
+                </button>
+              </div>
+
+              {/* Navbar - Centered absolutely on large screens */}
+              <nav className="hidden items-center justify-center gap-6 rounded-[176px] bg-white/60 px-6 py-4 text-base font-semibold shadow-[0_2px_27px_rgba(0,0,0,0.05)] backdrop-blur lg:flex lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:mt-6">
+                <div className="flex flex-nowrap items-center justify-center gap-8 whitespace-nowrap">
+                  {["Home", "About", "Services", "Products", "Contact"].map((item) => {
+                    const isActive = item === "Contact";
+                    return (
+                      <Link
+                        href={navHref(item)}
+                        key={item}
+                        className={`relative z-50 pb-1 transition-all whitespace-nowrap ${isActive ? "border-b-2 border-[#2c1a4d] text-[#372161]" : "text-[#3a3a3a] hover:text-[#372161]"}`}
+                      >
+                        {item}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </nav>
+
+              {/* Download CTA - Right Aligned on large screens */}
+              <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                <DownloadCTA />
+              </div>
+            </header>
+
+            <div className={`fixed inset-0 z-50 flex flex-col gap-8 bg-[#f9f7ff] px-6 py-8 transition-all duration-300 ease-in-out sm:hidden ${isMenuOpen ? 'translate-x-0 opacity-100' : 'pointer-events-none translate-x-full opacity-0'}`}>
+              <div className="flex items-center justify-between py-2">
+                <Image src="/assets/waygibb/logo.png" alt="WayGibb logo compact" width={180} height={90} className="h-[72px] w-auto" priority />
+                <button type="button" aria-label="Close navigation" className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#372161] text-xl text-[#372161]" onClick={() => setIsMenuOpen(false)}>✕</button>
+              </div>
+              <div className="flex flex-col gap-3 px-2 text-lg font-semibold">
+                {["Home", "About", "Services", "Products", "Contact"].map((item) => {
+                  const isActive = item === "Contact";
+                  return (
+                    <Link href={navHref(item)} key={item} className={`rounded-full px-6 py-4 text-left transition-colors ${isActive ? "bg-[#372161] text-white" : "text-[#3a3a3a] hover:text-[#372161]"}`} onClick={() => setIsMenuOpen(false)}>
+                      {item}
+                    </Link>
+                  );
+                })}
+              </div>
+              <DownloadCTA className="w-full justify-center" onClick={() => setIsMenuOpen(false)} />
+            </div>
+
+            <section className="flex flex-1 flex-col items-center justify-center w-full max-w-[800px] mx-auto text-center px-4 py-16 lg:py-24" data-aos="fade-up">
+              <div className="space-y-7 px-1 md:space-y-8 md:px-0 animate-fade-in-up">
+                <h1 className="text-[28px] font-[700] leading-[1.2] text-[#3a3a3a] drop-shadow-[0_0_12px_rgba(255,255,255,0.9)] sm:text-[26px] sm:leading-[1.15] md:text-[28px] md:leading-[1.1] lg:text-[30px] lg:leading-[1.05]">
+                  <span className="block">We&apos;d Love to Hear</span>
+                  <span className="block">From You</span>
                 </h1>
-                <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/85 sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
-                  <p className="m-0">
-                    Whether you have questions, feedback, or partnership
-                    inquiries, the WayGibb team is here to support you every
-                    step of the way.
+                <div className="space-y-4 text-base leading-[1.65] text-[#3a3a3a]/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] sm:text-lg sm:leading-[1.7] md:text-xl md:leading-[1.75]">
+                  <p className="m-0 max-w-[650px] mx-auto">
+                    Whether you have questions, feedback, or partnership inquiries, the WayGibb team is here to support you every step of the way.
                   </p>
                 </div>
               </div>
-              <div className="my-4 h-px w-full bg-[#d9d0f1] md:my-5" />
-              <div className="px-1 md:px-0">
-                <div className="w-full max-w-[567px] rounded-2xl bg-white/80 px-5 py-5 shadow-[0px_5px_13.5px_rgba(0,0,0,0.23)] sm:px-6 sm:py-6">
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="space-y-2">
-                      <p className="text-xl font-bold text-[#422774] sm:text-2xl">
-                        Follow us
-                      </p>
-                      <p className="text-base font-bold text-[#3a3a3a] sm:text-lg">
-                        @WayGibbOfficial
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-4 text-[#d9635e]">
-                      <Link
-                        href="#"
-                        aria-label="TikTok"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-transparent"
-                      >
-                        <Image
-                          src="/assets/tiktok.png"
-                          alt="TikTok"
-                          width={32}
-                          height={32}
-                          className="h-8 w-8 object-contain"
-                        />
-                      </Link>
-                      <Link
-                        href="#"
-                        aria-label="Facebook"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-transparent"
-                      >
-                        <Image
-                          src="/assets/facebook.png"
-                          alt="Facebook"
-                          width={32}
-                          height={32}
-                          className="h-8 w-8 object-contain"
-                        />
-                      </Link>
-                      <Link
-                        href="#"
-                        aria-label="Instagram"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-transparent"
-                      >
-                        <Image
-                          src="/assets/instagram.png"
-                          alt="Instagram"
-                          width={32}
-                          height={32}
-                          className="h-8 w-8 object-contain"
-                        />
-                      </Link>
-                      <Link
-                        href="#"
-                        aria-label="X (Twitter)"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-transparent"
-                      >
-                        <Image
-                          src="/assets/twitter.png"
-                          alt="X (Twitter)"
-                          width={32}
-                          height={32}
-                          className="h-8 w-8 object-contain"
-                        />
-                      </Link>
-                    </div>
-                  </div>
+              <div className="my-6 h-px w-full max-w-[600px] bg-[#d9d0f1] md:my-8" />
+              <div className="space-y-8 px-1 md:space-y-10 md:px-0 flex flex-col items-center">
+                <p className="text-lg font-semibold italic leading-[1.4] text-[#3a3a3a] drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] sm:text-xl md:text-2xl">
+                  Get in touch with us today.
+                </p>
+                <div id="download" className="flex flex-row flex-wrap justify-center gap-4 md:gap-5">
+                  <StoreButton href="#download" label="App Store" iconSrc="/assets/logos_apple-app-store.svg" className="flex-1 min-w-[160px] justify-center sm:min-w-[200px] lg:flex-none" />
+                  <StoreButton href="#download" label="Play Store" iconSrc="/assets/logos_google-play-icon.svg" className="flex-1 min-w-[160px] justify-center sm:min-w-[200px] lg:flex-none" />
                 </div>
               </div>
             </section>
-          </main>
-        </div>
-
-        <div className="relative hidden lg:flex lg:-mr-12 lg:-mt-8 lg:items-start lg:justify-end xl:-mr-15 xl:-mt-12" data-aos="fade-left">
-          <Image
-            src="/assets/contact.png"
-            alt="WayGibb support team collage"
-            width={600}
-            height={600}
-            className="h-auto w-[90%] object-contain"
-            priority
-          />
-        </div>
+          </div>
+        </main>
       </div>
 
       {/* Contact details + form section */}
